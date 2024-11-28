@@ -1,0 +1,6 @@
+{
+"enviroment":"development",
+"BASE_URL_Pro":"https://e-commer-tmp2024-0dbd4ebb7657.herokuapp.com",
+"BASE_URL_Dev":"http://localhost:3001",
+"BASE_URL_Test":""
+}

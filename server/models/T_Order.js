@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class T_Order extends Model {} // Booked maintenance orders
 
-T_order.init(
+T_Order.init(
   {    
     id: {
     type: DataTypes.INTEGER,
