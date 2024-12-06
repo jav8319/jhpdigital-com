@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class Spec extends Model {}
+class Subcategory extends Model {}
 
-Spec.init(
+Subcategory.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,9 +11,17 @@ Spec.init(
       primaryKey: true,
       autoIncrement: true,
     },
-   SpecName: {
+    SubcategoryName: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    CategoryID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'categories', // name of the related table
+        key: 'id',
+      },
     },
   },
   {
@@ -21,9 +29,8 @@ Spec.init(
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'specs',
+    modelName: 'subcategories',
   }
 );
 
-module.exports = Spec;
-
+module.exports = Subcategory;

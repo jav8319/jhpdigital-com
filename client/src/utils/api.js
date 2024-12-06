@@ -1,6 +1,7 @@
 import axios from 'axios';
 import urls from "../urls.json" // Import dotenv correctly
 
+
 let envlocal
 let baseURL
 
@@ -14,18 +15,13 @@ if (urls.enviroment=== 'production') {
   baseURL = urls.BASE_URL_Test;
   envlocal = true
 } 
+
+
 export const Alldata = axios.create({
   baseURL: `${baseURL}`,
   withCredentials: true
 });
-export const Loginuser = axios.create({
-  baseURL: `${baseURL}/userlogin`,
-  withCredentials: true
-});
-export const Signupuser = axios.create({
-  baseURL: `${baseURL}/usersignup`,
-  withCredentials: true
-});
+
 export const Api = axios.create({
   baseURL: `${baseURL}/api`,
   withCredentials: true

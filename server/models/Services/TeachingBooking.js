@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class ProductSpec extends Model {}
+class TeachingBooking extends Model {} // Booked maintenance orders
 
-ProductSpec.init(
+TeachingBooking.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,36 +11,54 @@ ProductSpec.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    ProductID: {
+
+    TeachingJobId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'products', // name of the related table
+        model: 'teaching_jobs', // name of the related table 
         key: 'id',
       },
     },
-    SpecID: {
+
+    UserID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'specs', // name of the related table
+        model: 'users', // name of the related table
         key: 'id',
       },
     },
-    Value: {
-      type: DataTypes.STRING,//value of the spec
+
+
+    dateStartScheduled: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
+    dateEndtScheduled: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+
+    isBooked: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+
+
+
   },
   {
     sequelize,
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'product_specs',
+    modelName: 'teaching_bkgs',
   }
 );
 
-module.exports = ProductSpec;
+module.exports = TeachingBooking;
+
+
 
 

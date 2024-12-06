@@ -1,46 +1,35 @@
 const User = require('./User');
-const Category = require('./Category');
-const Attribute = require('./Attribute');
-const ProductAttribute = require('./ProductAttribute');
-const Product = require('./Product');
-const M_Order = require('./M_Order');
-const MaintenanceJob = require('./MaintenanceJob');
-const P_Order = require('./P_Order');
-const ProductImage = require('./ProductImage');
-const ProductOrder = require('./ProductOrder');
-const ProductSpec = require('./ProductSpec');
-const Schedule = require('./Schedule');
-const Spec= require('./Spec');
-const Subcategory = require('./Subcategory');
-const T_Order = require('./T_Order');
-const TeachingJob = require('./TeachingJob');
-const UserSchedule = require('./UserSchedule');
+const Category = require('./Store/Category');
+const ListAttribute = require('./Store/ListAttribute');
+const ProductAttribute = require('./Store/ProductAttribute');
+const Product = require('./Store/Product');
+const P_Order = require('./Store/P_Order');
+const ProductImage = require('./Store/ProductImage');
+const ProductOrder = require('./Store/ProductOrder');
+const ProductSpec = require('./Store/ProductSpec');
+const Spec= require('./Store/Spec');
+const Subcategory = require('./Store/Subcategory');
+const ProdCode = require('./Store/ProdCode');
 
+const M_Order = require('./Services/M_Order');
+const MaintenanceJob = require('./Services/MaintenanceJob');
+const MaintBooking = require('./Services/MaintBooking');
+const TeachingBooking = require('./Services/TeachingBooking');
+const T_Order = require('./Services/T_Order');
+const UserTask = require('./Services/UserTask');
+const TeachingJob = require('./Services/TeachingJob');
+const Availability = require('./Services/Availability');
+const Task = require('./Services/Task');
 
-Product.belongsToMany(Attribute, {
-  through: ProductAttribute,
-  foreignKey: 'ProductID',
-  otherKey: 'AttributeID',
-});
-
-// An attribute can belong to many products
-Attribute.belongsToMany(Product, {
-  through: ProductAttribute,
-  foreignKey: 'AttributeID',
-  otherKey: 'ProductID',
-});
 
 Product.belongsTo(Category, {
   foreignKey: 'CategoryID',
-  onDelete: 'CASCADE',
+
 });
 
 Product.belongsTo(Subcategory, {
-  foreignKey: 'SubcategoryID',
-  onDelete: 'CASCADE',
-  allowNull: true, // Allow null values
+  foreignKey: 'SubcategoryID', 
 });
-
 
 Subcategory.belongsTo(Category, {
   foreignKey: 'CategoryID',
@@ -48,47 +37,34 @@ Subcategory.belongsTo(Category, {
 });
 
 
-M_Order.hasOne(Schedule, {
-  foreignKey: 'ScheduleID',
-  onDelete: 'CASCADE',
-});
-M_Order.hasOne(MaintenanceJob, {
-  foreignKey: 'MaintenanceID',
-  onDelete: 'CASCADE',
-});
-
-P_Order.belongsToMany(Product, {
-  through: ProductOrder,
-  foreignKey: 'P_OrderID',
-  otherKey: 'ProductID',
-});
-
-Product.belongsToMany(P_Order, {
-  through: ProductOrder,
+Product.hasMany(ProdCode, {
   foreignKey: 'ProductID',
-  otherKey: 'P_OrderID',
+})
+
+
+ProdCode.hasMany(ProductImage, {
+  foreignKey: 'codeID',
+  onDelete: 'CASCADE', // This ensures images are deleted when the product is deleted
 });
 
-ProductImage.belongsTo(Product, {
-  foreignKey: 'ProductID',
-  onDelete: 'CASCADE',
-});
-Product.hasMany(ProductImage, {
-  foreignKey: 'ProductID',
-  onDelete: 'CASCADE',
-});
 
-Schedule.belongsToMany(User, {
-  through: UserSchedule,
-  foreignKey: 'ScheduleID',
-  otherKey: 'UserID',
+// An attribute can belong to many products
+ListAttribute.belongsToMany(ProdCode, {
+  through: ProductAttribute,
+  foreignKey: 'AttributeID',
+  otherKey: 'codeID',
 });
+ProdCode.belongsToMany(ListAttribute, {
+  through: ProductAttribute,
+  foreignKey: 'codeID',
+  otherKey: 'AttributeID',
+});
+// ProdCode.belongsToMany(ListAttribute, {
+//   through: ProductAttribute,
+//   foreignKey: 'codeID',
+//   otherKey: 'AttributeID',
+// });
 
-User.belongsToMany(Schedule, {
-  through: UserSchedule,
-  foreignKey: 'UserID',
-  otherKey: 'ScheduleID',
-});
 
 Spec.belongsToMany(Product, {
   through: ProductSpec,
@@ -96,40 +72,75 @@ Spec.belongsToMany(Product, {
   otherKey: 'ProductID',
 });
 
-Product.belongsToMany(Spec, {
-  through: ProductSpec,
+
+Product.belongsToMany(P_Order, {
+  through: ProductOrder,
   foreignKey: 'ProductID',
-  otherKey: 'SpecID',
+  otherKey: 'P_OrderID',
 });
 
-T_Order.hasOne(TeachingJob, {
+Availability.belongsTo(User, {
+  foreignKey: 'UserID',
+  onDelete: 'CASCADE',
+});
+
+
+M_Order.hasMany(MaintenanceJob, {
+  foreignKey: 'MaintenanceID',
+  onDelete: 'CASCADE',
+});
+
+MaintenanceJob.belongsToMany(User, {
+  through: MaintBooking,
+  foreignKey: 'UserID',
+  otherKey: 'MaintJobId',
+});
+
+MaintenanceJob.hasOne((Task), {
+  foreignKey: 'TaskID',
+  onDelete: 'CASCADE',
+});
+
+T_Order.hasMany(TeachingJob, {
   foreignKey: 'TeachingJobID',
   onDelete: 'CASCADE',
 });
 
-T_Order.hasOne(Schedule, {
-  foreignKey: 'ScheduleID',
-  onDelete: 'CASCADE',
+
+TeachingJob.belongsToMany(User, {
+  through: TeachingBooking,
+  foreignKey: 'UserID',
+  otherKey: 'TeachingJobId',
 });
 
 
+TeachingJob.hasOne((Task), {
+  foreignKey: 'TaskID',
+  onDelete: 'CASCADE',
+});
+
+User.hasMany(UserTask, {
+  foreignKey: 'UserID',
+  onDelete: 'CASCADE',
+});
+
 module.exports = {
 User,
+ProdCode,
 Category,
-Attribute,
+ListAttribute,
 ProductAttribute,
 Product,
 M_Order,
 MaintenanceJob,
 P_Order,
-ProductAttribute,
 ProductImage,
 ProductOrder,
 ProductSpec,
-Schedule,
 Spec,
 Subcategory,
 T_Order,
 TeachingJob,
-UserSchedule
+TeachingBooking,
+MaintBooking,
 };

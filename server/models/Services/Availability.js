@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class Schedule extends Model {}
+class Availability extends Model {}
 
-Schedule.init(
+Availability.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,30 +11,39 @@ Schedule.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    ScheduleDate: {
-      type: DataTypes.BIGINT, // milliseconds representation of the date
+
+    UserID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'users', // name of the related table
+        key: 'id',
+      },
+    },
+
+    WeekDay: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
 
     InitialHour: {
-      type: DataTypes.BIGINT, // milliseconds representation of the initial hour
+      type: DataTypes.TIME,
       allowNull: false,
     },
     FinalHour: {
-      type: DataTypes.BIGINT, // milliseconds representation of the final hour
+      type: DataTypes.TIME,
       allowNull: false,
-    },
+    }
   },
   {
     sequelize,
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'schedules',
+    modelName: 'availabilities',
   }
 );
 
-module.exports = Schedule;
-
+module.exports = Availability;
 
 

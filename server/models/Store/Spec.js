@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class Category extends Model {}
+class Spec extends Model {}
 
-Category.init(
+Spec.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,7 +11,7 @@ Category.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    CategoryName: {
+   SpecName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -21,9 +21,9 @@ Category.init(
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'categories',
+    modelName: 'specs',
   }
 );
 
-module.exports = Category;
+module.exports = Spec;
 

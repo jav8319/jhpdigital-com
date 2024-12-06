@@ -3,6 +3,8 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useStoreContext } from '../utils/GlobalState';
 import { LOGIN_USER } from '../utils/actions';
+import { Api } from "../utils/api";
+
 
 function LoginSignUpDialog({ toggleDialog }) {
   const [isLogin, setIsLogin] = useState(true); // Toggle between login and sign-up
@@ -21,25 +23,25 @@ function LoginSignUpDialog({ toggleDialog }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const endpoint = isLogin ? '/api/auth/login' : '/api/auth/signup';
+    const endpoint = isLogin ? '/user/login' : '/user';
 
     try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-        credentials: 'include', // To send cookies with requests
-      });
+      console.log('formdata',formData);
+      console.log('enpoint',endpoint);
+      console.log('enpoint',Api);
+      const response = await Api.post(`${endpoint}`, formData);
 
-      if (response.ok) {
-        const data = await response.json();
+      if (response.status === 200) {
+        console.log('response',response);
         dispatch({ type: LOGIN_USER, login: true });
-        navigate('/Admin'); // Navigate to the Admin route
+        navigate('/admin/availability'); // Navigate to the Admin route
         toggleDialog(); // Close the dialog
       } else {
-        const error = await response.json();
-        alert(error.message || 'An error occurred');
+       
+        alert('An error occurred');
       }
+
+      console.log('response',response);
     } catch (err) {
       console.error('Error:', err);
       alert('Failed to connect to the server.');
@@ -112,26 +114,3 @@ export default LoginSignUpDialog;
 
 
 
-
-useEffect(() => {
-  const fetchOrders = async () => {
-    try {
-      const response = await Api.get(`/singleorder/orderId`, {
-        headers: {
-        Authorization: `${localStorage.getItem('id_token')}`,
-        },
-      });
-
-      if (response && response.data) {
-
-        console.log(response.data)
-        setOrder(response.data);
-        setSOIsLoading(false);
-      }
-    } catch (error) {
-      setErrorfound(true);
-      console.error('Error fetching orders:', error);
-    }
-  };
-  fetchOrders();
-}, [orderId]);

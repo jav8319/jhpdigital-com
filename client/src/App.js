@@ -8,7 +8,7 @@ import About from './pages/About';
 import Maint from './pages/Maint';
 import Lessons from './pages/Lessons';
 import Store from './pages/Store';  
-import Admin from './pages/Admin';
+import Availability from './pages/Availability';
 
 function App() {
 
@@ -39,8 +39,8 @@ function App() {
                     element={<Store />} 
                /> 
                  <Route 
-                path="/Admin" 
-                element={<Admin />} 
+                path="/admin/availability" 
+                element={<Availability />} 
               />
                 </Routes>
           <Footer />

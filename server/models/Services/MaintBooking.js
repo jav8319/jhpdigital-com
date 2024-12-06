@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class ProductAttribute extends Model {}
+class MaintBooking extends Model {} // Booked maintenance orders
 
-ProductAttribute.init(
+MaintBooking.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,36 +11,49 @@ ProductAttribute.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    ProductID: {
+    UserID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'products', // name of the related table
+        model: 'users', // name of the related table
         key: 'id',
       },
     },
-    AttributeID: {
+    MaintJobId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'attributes', // name of the related table
+        model: 'maintenance_jobs', // name of the related table 
         key: 'id',
       },
     },
-    Value: {
-      type: DataTypes.STRING,
+
+    dateStartScheduled: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
+    dateEndtScheduled: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+
+    isBooked: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+
   },
   {
     sequelize,
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'product_attributes',
+    modelName: 'Maint_bkgs',
   }
 );
 
-module.exports = ProductAttribute;
+module.exports = MaintBooking;
+
+
 
 

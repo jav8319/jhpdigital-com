@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class T_Order extends Model {} // Booked maintenance orders
+class M_order extends Model {} // Booked maintenance orders
 
-T_Order.init(
+M_order.init(
   {    
     id: {
     type: DataTypes.INTEGER,
@@ -20,7 +20,8 @@ T_Order.init(
       allowNull: true,
     },
     Address: {
-      type: DataTypes.STRING, 
+      type: DataTypes.STRING,  
+      allowNull: true,
     },
     Email: {
       type: DataTypes.STRING,
@@ -31,19 +32,34 @@ T_Order.init(
       },
     },
 
-    ScheduleID: {
-      type: DataTypes.INTEGER,
+    location: {
+      type: DataTypes.STRING,
       allowNull: false,
-      references: {
-        model: 'schedules', // name of the related table 
-        key: 'id',
-      },
     },
-    TeachingJobID: {
+
+    Subscription:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    PayFrequencySub:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    ScheduledDateStart: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+
+nextScheduledDateStart: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    
+    MaintenanceID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'teaching_jobs', // name of the related table 
+        model: 'maintenance_jobs', // name of the related table 
         key: 'id',
       },
     },
@@ -55,11 +71,11 @@ T_Order.init(
       type: DataTypes.INTEGER,//seconds
       allowNull: false,
     },
-
-    ZoomID: {
-      type: DataTypes.STRING, 
-      allowNull: true,
+    TermsAgreed: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
+
     TransactionRefNum1: {
       type: DataTypes.STRING, 
       allowNull: false,
@@ -74,11 +90,11 @@ T_Order.init(
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 't_orders',
+    modelName: 'm_orders',
   }
 );
 
-module.exports = T_Order;
+module.exports = M_order;
 
 
 

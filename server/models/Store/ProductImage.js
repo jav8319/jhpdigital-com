@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
 class ProductImage extends Model {}
 
@@ -11,11 +11,11 @@ ProductImage.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    ProductID: {
+    codeID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'products', // name of the related table
+        model: 'product_codes', // name of the related table
         key: 'id',
       },
     },

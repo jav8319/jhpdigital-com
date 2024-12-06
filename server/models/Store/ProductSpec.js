@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class UserSchedule extends Model {}
+class ProductSpec extends Model {}
 
-UserSchedule.init(
+ProductSpec.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,28 +11,24 @@ UserSchedule.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    UserID: {
+    ProductID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'users', // name of the related table
+        model: 'products', // name of the related table
         key: 'id',
       },
     },
-    ScheduleID: {
+    SpecID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'schedules', // name of the related table
+        model: 'specs', // name of the related table
         key: 'id',
       },
     },
-    Booked: {
-      type: DataTypes.BOOLEAN, 
-      allowNull: false,
-    },
-    Activity: {
-      type: DataTypes.STRING,
+    Value: {
+      type: DataTypes.STRING,//value of the spec
       allowNull: false,
     },
   },
@@ -41,11 +37,10 @@ UserSchedule.init(
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'user_schedules',
+    modelName: 'product_specs',
   }
 );
 
-module.exports = UserSchedule;
-
+module.exports = ProductSpec;
 
 

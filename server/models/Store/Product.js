@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
 class Product extends Model {}
 
@@ -12,10 +12,6 @@ Product.init(
       autoIncrement: true,
     },
     ProductGroupID: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    ProductCodeNum: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -39,18 +35,11 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Description: {
+    product_description: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    Price: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-    },
-    Stock: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+
     PackageWidth: {
       type: DataTypes.FLOAT,
       allowNull: false,
@@ -89,7 +78,7 @@ Product.init(
     },
     Obsolete: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
+      allowNull: false,
     },
   },
   {

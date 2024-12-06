@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class Attribute extends Model {}
+class ListAttribute extends Model {}
 
-Attribute.init(
+ListAttribute.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -21,9 +21,9 @@ Attribute.init(
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'attributes',
+    modelName: 'list_attributes',
   }
 );
 
-module.exports = Attribute;
+module.exports = ListAttribute;
 

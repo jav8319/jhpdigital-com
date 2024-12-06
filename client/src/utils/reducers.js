@@ -8,7 +8,7 @@ export const reducer = (state, action) => {
     case LOGIN_USER:
       return {
         ...state,
-        isloggin: [...action.login],
+        isloggin: action.login,
       };
    
 

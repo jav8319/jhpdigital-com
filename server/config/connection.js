@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 let sequelize;
 
 if (process.env.JAWSDB_URL) {
-  sequelize = new Sequelize(process.env.JAWSDB_URL);
+  sequelize = new Sequelize(process.env.DB_URL);
 } else {
   sequelize = new Sequelize('mysqljhpdigital_db', 'root', 'Ja37600100_', {
     host: 'localhost',

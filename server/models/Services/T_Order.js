@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../../config/connection');
 
-class M_order extends Model {} // Booked maintenance orders
+class T_Order extends Model {} // Booked maintenance orders
 
-M_order.init(
+T_Order.init(
   {    
     id: {
     type: DataTypes.INTEGER,
@@ -20,30 +20,46 @@ M_order.init(
       allowNull: true,
     },
     Address: {
-      type: DataTypes.STRING, 
+      type: DataTypes.STRING,
+      allowNull: true, 
     },
     Email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       unique: true,
       validate: {
         isEmail: true, // Validates that the value is a valid email address
       },
     },
 
-    ScheduleID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'schedules', // name of the related table 
-        key: 'id',
-      },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
-    MaintenanceID: {
+
+    Subscription:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    PayFrequencySub:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    ScheduledDateStart: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+
+nextScheduledDateStart: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+
+    TeachingJobID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'maintenance_jobs', // name of the related table 
+        model: 'teaching_jobs', // name of the related table 
         key: 'id',
       },
     },
@@ -56,6 +72,15 @@ M_order.init(
       allowNull: false,
     },
 
+    TermsAgreed: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+
+    ZoomID: {
+      type: DataTypes.STRING, 
+      allowNull: true,
+    },
     TransactionRefNum1: {
       type: DataTypes.STRING, 
       allowNull: false,
@@ -70,11 +95,11 @@ M_order.init(
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'm_orders',
+    modelName: 't_orders',
   }
 );
 
-module.exports = M_order;
+module.exports = T_Order;
 
 
 
