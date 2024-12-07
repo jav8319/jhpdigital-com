@@ -11,11 +11,11 @@ ProductImage.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    codeID: {
+    ProductID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'product_codes', // name of the related table
+        model: 'products', // name of the related table
         key: 'id',
       },
     },

@@ -5,12 +5,6 @@ class ProductSpec extends Model {}
 
 ProductSpec.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     ProductID: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -27,7 +21,7 @@ ProductSpec.init(
         key: 'id',
       },
     },
-    Value: {
+    SpecValue: {
       type: DataTypes.STRING,//value of the spec
       allowNull: false,
     },

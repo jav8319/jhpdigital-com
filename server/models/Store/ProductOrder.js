@@ -5,17 +5,11 @@ class ProductOrder extends Model {}
 
 ProductOrder.init(
   {
-    id: {
+    codeID: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    ProductID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
-        model: 'products', // name of the related table
+        model: 'product_codes', // name of the related table
         key: 'id',
       },
     },
@@ -26,7 +20,12 @@ ProductOrder.init(
         model: 'p_orders', // name of the related table
         key: 'id',
       },
-    }
+    },
+
+    ProductQty: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,

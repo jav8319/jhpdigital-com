@@ -9,7 +9,8 @@ const ProAttrSpec=[
                 Stock: 50,
                 AttrNameVal:[
                     {AttributeName:"color", Value:'000000ff'},
-                ]
+                ],
+                
             },
             {
                 ProdCode:'K3X6QYH6', 
@@ -40,7 +41,7 @@ const ProAttrSpec=[
     Price: 18.99,
     Stock: 180,
     AttrNameVal:[
-    {AttributeName:"color", Value:'7c5bc7ff,c35bc7ff'},
+    {AttributeName:"color", Value:'7c5bc7ff|c35bc7ff'},
     {AttributeName:"size", Value:'M'},
     ]},
     {ProdCode:'GSYBWJ1U',
@@ -232,7 +233,7 @@ const ProAttrSpec=[
     Stock: 53,
     AttrNameVal:[
     {AttributeName:"size", Value:'M'},
-    {AttributeName:"color", Value:'5bc784ff,5bbac7ff,842c50ff'},
+    {AttributeName:"color", Value:'5bc784ff|5bbac7ff|842c50ff'},
     ]},
     {ProdCode:'D0PDNXJW', 
     Price: 50.99,

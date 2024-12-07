@@ -1,0 +1,712 @@
+[
+	{
+		"ProID" : 1,
+		"CtgryID" : 1,
+		"ProName" : "Smartphone X10",
+		"ProDescrptn" : "A high-performance smartphone with a sleek design.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo2.jpg.jpg",
+		"price" : 699.99,
+		"attribute_name" : "color",
+		"attribute_value" : "000000ff"
+	},
+	{
+		"ProID" : 1,
+		"CtgryID" : 1,
+		"ProName" : "Smartphone X10",
+		"ProDescrptn" : "A high-performance smartphone with a sleek design.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo1.jpg.jpg",
+		"price" : 699.99,
+		"attribute_name" : "color",
+		"attribute_value" : "000000ff"
+	},
+	{
+		"ProID" : 1,
+		"CtgryID" : 1,
+		"ProName" : "Smartphone X10",
+		"ProDescrptn" : "A high-performance smartphone with a sleek design.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo2.jpg.jpg",
+		"price" : 689.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 1,
+		"CtgryID" : 1,
+		"ProName" : "Smartphone X10",
+		"ProDescrptn" : "A high-performance smartphone with a sleek design.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo1.jpg.jpg",
+		"price" : 689.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 2,
+		"CtgryID" : 1,
+		"ProName" : "Wireless Earbuds",
+		"ProDescrptn" : "High-quality wireless earbuds with noise cancellation.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo16.jpg.jpg",
+		"price" : 129.99,
+		"attribute_name" : "color",
+		"attribute_value" : "000000ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bbac7ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bbac7ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bbac7ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "size",
+		"attribute_value" : "S"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "size",
+		"attribute_value" : "S"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "size",
+		"attribute_value" : "S"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "color",
+		"attribute_value" : "7c5bc7ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "color",
+		"attribute_value" : "7c5bc7ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "color",
+		"attribute_value" : "7c5bc7ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "size",
+		"attribute_value" : "S"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "size",
+		"attribute_value" : "S"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 49.99,
+		"attribute_name" : "size",
+		"attribute_value" : "S"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bc784ff|5bbac7ff|842c50ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bc784ff|5bbac7ff|842c50ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bc784ff|5bbac7ff|842c50ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 50.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 51.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 51.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 51.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+		"price" : 51.99,
+		"attribute_name" : "size",
+		"attribute_value" : "XL"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+		"price" : 51.99,
+		"attribute_name" : "size",
+		"attribute_value" : "XL"
+	},
+	{
+		"ProID" : 3,
+		"CtgryID" : 2,
+		"ProName" : "Women’s Jeans",
+		"ProDescrptn" : "Stylish and comfortable jeans for women.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg",
+		"price" : 51.99,
+		"attribute_name" : "size",
+		"attribute_value" : "XL"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 19.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bbac7ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 19.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bbac7ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 19.99,
+		"attribute_name" : "size",
+		"attribute_value" : "L"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 19.99,
+		"attribute_name" : "size",
+		"attribute_value" : "L"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 18.99,
+		"attribute_name" : "color",
+		"attribute_value" : "7c5bc7ff|c35bc7ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 18.99,
+		"attribute_name" : "color",
+		"attribute_value" : "7c5bc7ff|c35bc7ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 18.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 18.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 18.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bc784ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 18.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bc784ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 18.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 18.99,
+		"attribute_name" : "size",
+		"attribute_value" : "M"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 17.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 17.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 17.99,
+		"attribute_name" : "size",
+		"attribute_value" : "S"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 17.99,
+		"attribute_name" : "size",
+		"attribute_value" : "S"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 22.99,
+		"attribute_name" : "color",
+		"attribute_value" : "c35bc7ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 22.99,
+		"attribute_name" : "color",
+		"attribute_value" : "c35bc7ff"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+		"price" : 22.99,
+		"attribute_name" : "size",
+		"attribute_value" : "XL"
+	},
+	{
+		"ProID" : 4,
+		"CtgryID" : 4,
+		"ProName" : "Men’s T-Shirt",
+		"ProDescrptn" : "A comfortable cotton t-shirt for men.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg",
+		"price" : 22.99,
+		"attribute_name" : "size",
+		"attribute_value" : "XL"
+	},
+	{
+		"ProID" : 5,
+		"CtgryID" : 5,
+		"ProName" : "LED Lamp",
+		"ProDescrptn" : "Energy-efficient LED lamp for home and office use.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo6.jpg.jpg",
+		"price" : 25.99,
+		"attribute_name" : null,
+		"attribute_value" : null
+	},
+	{
+		"ProID" : 5,
+		"CtgryID" : 5,
+		"ProName" : "LED Lamp",
+		"ProDescrptn" : "Energy-efficient LED lamp for home and office use.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo5.jpg.jpg",
+		"price" : 25.99,
+		"attribute_name" : null,
+		"attribute_value" : null
+	},
+	{
+		"ProID" : 6,
+		"CtgryID" : 6,
+		"ProName" : "Moisturizing Cream",
+		"ProDescrptn" : "Hydrating cream for all skin types.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo10.jpg.jpg",
+		"price" : 19.99,
+		"attribute_name" : "protection",
+		"attribute_value" : "05"
+	},
+	{
+		"ProID" : 6,
+		"CtgryID" : 6,
+		"ProName" : "Moisturizing Cream",
+		"ProDescrptn" : "Hydrating cream for all skin types.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo10.jpg.jpg",
+		"price" : 18.99,
+		"attribute_name" : "protection",
+		"attribute_value" : "02"
+	},
+	{
+		"ProID" : 8,
+		"CtgryID" : 8,
+		"ProName" : "Yoga Mat",
+		"ProDescrptn" : "Non-slip yoga mat for home workouts.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo8.jpg.jpg",
+		"price" : 29.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bbac7ff"
+	},
+	{
+		"ProID" : 8,
+		"CtgryID" : 8,
+		"ProName" : "Yoga Mat",
+		"ProDescrptn" : "Non-slip yoga mat for home workouts.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo7.jpg.jpg",
+		"price" : 29.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bbac7ff"
+	},
+	{
+		"ProID" : 8,
+		"CtgryID" : 8,
+		"ProName" : "Yoga Mat",
+		"ProDescrptn" : "Non-slip yoga mat for home workouts.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo8.jpg.jpg",
+		"price" : 29.99,
+		"attribute_name" : "color",
+		"attribute_value" : "f4f70099"
+	},
+	{
+		"ProID" : 8,
+		"CtgryID" : 8,
+		"ProName" : "Yoga Mat",
+		"ProDescrptn" : "Non-slip yoga mat for home workouts.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo7.jpg.jpg",
+		"price" : 29.99,
+		"attribute_name" : "color",
+		"attribute_value" : "f4f70099"
+	},
+	{
+		"ProID" : 9,
+		"CtgryID" : 9,
+		"ProName" : "Building Blocks Set",
+		"ProDescrptn" : "Colorful building blocks for kids aged 3+.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo14.jpg.jpg",
+		"price" : 24.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bc784ff"
+	},
+	{
+		"ProID" : 9,
+		"CtgryID" : 9,
+		"ProName" : "Building Blocks Set",
+		"ProDescrptn" : "Colorful building blocks for kids aged 3+.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo13.jpg.jpg",
+		"price" : 24.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bc784ff"
+	},
+	{
+		"ProID" : 9,
+		"CtgryID" : 9,
+		"ProName" : "Building Blocks Set",
+		"ProDescrptn" : "Colorful building blocks for kids aged 3+.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo12.jpg.jpg",
+		"price" : 24.99,
+		"attribute_name" : "color",
+		"attribute_value" : "5bc784ff"
+	},
+	{
+		"ProID" : 9,
+		"CtgryID" : 9,
+		"ProName" : "Building Blocks Set",
+		"ProDescrptn" : "Colorful building blocks for kids aged 3+.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo14.jpg.jpg",
+		"price" : 24.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 9,
+		"CtgryID" : 9,
+		"ProName" : "Building Blocks Set",
+		"ProDescrptn" : "Colorful building blocks for kids aged 3+.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo13.jpg.jpg",
+		"price" : 24.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 9,
+		"CtgryID" : 9,
+		"ProName" : "Building Blocks Set",
+		"ProDescrptn" : "Colorful building blocks for kids aged 3+.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo12.jpg.jpg",
+		"price" : 24.99,
+		"attribute_name" : "color",
+		"attribute_value" : "842c50ff"
+	},
+	{
+		"ProID" : 10,
+		"CtgryID" : 10,
+		"ProName" : "Fiction Bestseller",
+		"ProDescrptn" : "A thrilling novel from a best-selling author.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo9.jpg.jpg",
+		"price" : 14.99,
+		"attribute_name" : null,
+		"attribute_value" : null
+	},
+	{
+		"ProID" : 11,
+		"CtgryID" : 11,
+		"ProName" : "Portable USB Fan",
+		"ProDescrptn" : "Compact USB-powered fan for personal use.",
+		"image_url" : "https://storage.googleapis.com/ecphotos/photo15.jpg.jpg",
+		"price" : 15.99,
+		"attribute_name" : null,
+		"attribute_value" : null
+	}
+]

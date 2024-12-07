@@ -21,7 +21,7 @@ ProductAttribute.init(
         key: 'id',
       },
     },
-    Value: {
+    AttributeValue: {
       type: DataTypes.STRING,
       allowNull: false,
     },

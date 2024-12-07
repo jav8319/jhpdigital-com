@@ -33,7 +33,7 @@ MaintenanceJob.init(
       allowNull: true,
     },
 
-    JobCode: {
+    TaskID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {

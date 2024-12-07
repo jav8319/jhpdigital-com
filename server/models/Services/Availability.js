@@ -22,7 +22,7 @@ Availability.init(
     },
 
     WeekDay: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
 

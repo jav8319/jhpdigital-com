@@ -15,6 +15,7 @@ const myproductlist = [
               ProductWeight: 0.4,
               PreviousProduct: null,
               Obsolete: false,
+              photos:['photo1.jpg','photo2.jpg']
             },
             {
               ProductGroupID: 'GRP002',            
@@ -31,6 +32,7 @@ const myproductlist = [
               ProductWeight: 0.2,
               PreviousProduct: null,
               Obsolete: false,
+              photos:['photo3.jpg','photo4.jpg']
             },    
             {
               ProductGroupID: 'GRP003',            
@@ -49,6 +51,7 @@ const myproductlist = [
               ProductWeight: 1.0,
               PreviousProduct: null,
               Obsolete: false,
+              photos:['photo5.jpg','photo6.jpg']
             },
             {
               ProductGroupID: 'GRP004',
@@ -65,6 +68,7 @@ const myproductlist = [
               ProductWeight: 2.0,
               PreviousProduct: null,
               Obsolete: false,
+              photos:['photo7.jpg','photo8.jpg']
             },
             {
               ProductGroupID: 'GRP005',
@@ -81,6 +85,7 @@ const myproductlist = [
               ProductWeight: 0.5,
               PreviousProduct: null,
               Obsolete: false,
+              photos:['photo9.jpg']
             },
     {
       ProductGroupID: 'GRP007',
@@ -97,6 +102,8 @@ const myproductlist = [
       ProductWeight: 0.4,
       PreviousProduct: null,
       Obsolete: false,
+      photos:['photo10.jpg']
+      
     },
    {
       ProductGroupID: 'GRP008',
@@ -113,6 +120,7 @@ const myproductlist = [
       ProductWeight: 0.25,
       PreviousProduct: null,
       Obsolete: false,
+      photos:['photo11.jpg']
     },
     {
       ProductGroupID: 'GRP009',
@@ -129,6 +137,12 @@ const myproductlist = [
       ProductWeight: 1.5,
       PreviousProduct: null,
       Obsolete: false,
+      photos:[
+        'photo12.jpg',
+        'photo13.jpg',
+        'photo14.jpg'
+
+      ]
     },
     {
       ProductGroupID: 'GRP010',
@@ -145,6 +159,7 @@ const myproductlist = [
       ProductWeight: 0.5,
       PreviousProduct: null,
       Obsolete: false,
+      photos:['photo15.jpg']
     },
     {
       ProductGroupID: 'GRP011',
@@ -161,6 +176,7 @@ const myproductlist = [
       ProductWeight: 0.35,
       PreviousProduct: null,
       Obsolete: false,
+      photos:['photo16.jpg']
     },
     {
       ProductGroupID: 'GRP012',
@@ -177,6 +193,10 @@ const myproductlist = [
       ProductWeight: 1.0,
       PreviousProduct: null,
       Obsolete: false,
+      photos:['photo17.jpg',
+    'photo18.jpg',
+    'photo19.jpg'
+      ]
     },
 
 

@@ -5,12 +5,6 @@ class UserTask extends Model {} // Booked maintenance orders
 
 UserTask.init(
   {    
-    id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
     UserID: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -27,6 +21,13 @@ taskID: {
         key: 'id',
       },
     },
+
+    isApproved: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+
+
 
 
    

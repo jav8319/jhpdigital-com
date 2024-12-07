@@ -10,7 +10,6 @@ const ProductSpec = require('./Store/ProductSpec');
 const Spec= require('./Store/Spec');
 const Subcategory = require('./Store/Subcategory');
 const ProdCode = require('./Store/ProdCode');
-
 const M_Order = require('./Services/M_Order');
 const MaintenanceJob = require('./Services/MaintenanceJob');
 const MaintBooking = require('./Services/MaintBooking');
@@ -24,7 +23,6 @@ const Task = require('./Services/Task');
 
 Product.belongsTo(Category, {
   foreignKey: 'CategoryID',
-
 });
 
 Product.belongsTo(Subcategory, {
@@ -40,15 +38,10 @@ Subcategory.belongsTo(Category, {
 Product.hasMany(ProdCode, {
   foreignKey: 'ProductID',
 })
+Product.hasMany(ProductImage, {
+  foreignKey: 'ProductID',
+})
 
-
-ProdCode.hasMany(ProductImage, {
-  foreignKey: 'codeID',
-  onDelete: 'CASCADE', // This ensures images are deleted when the product is deleted
-});
-
-
-// An attribute can belong to many products
 ListAttribute.belongsToMany(ProdCode, {
   through: ProductAttribute,
   foreignKey: 'AttributeID',
@@ -59,12 +52,6 @@ ProdCode.belongsToMany(ListAttribute, {
   foreignKey: 'codeID',
   otherKey: 'AttributeID',
 });
-// ProdCode.belongsToMany(ListAttribute, {
-//   through: ProductAttribute,
-//   foreignKey: 'codeID',
-//   otherKey: 'AttributeID',
-// });
-
 
 Spec.belongsToMany(Product, {
   through: ProductSpec,
@@ -73,9 +60,9 @@ Spec.belongsToMany(Product, {
 });
 
 
-Product.belongsToMany(P_Order, {
+ProdCode.belongsToMany(P_Order, {
   through: ProductOrder,
-  foreignKey: 'ProductID',
+  foreignKey: 'codeID',
   otherKey: 'P_OrderID',
 });
 
@@ -126,6 +113,7 @@ User.hasMany(UserTask, {
 
 module.exports = {
 User,
+UserTask,
 ProdCode,
 Category,
 ListAttribute,
@@ -143,4 +131,6 @@ T_Order,
 TeachingJob,
 TeachingBooking,
 MaintBooking,
+Availability,
+Task
 };

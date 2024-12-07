@@ -12,7 +12,7 @@ TaskCode.init(
     autoIncrement: true,
   },
 
-JobCode: {
+TaskCode: {
       type: DataTypes.STRING,
       allowNull: false,
     },

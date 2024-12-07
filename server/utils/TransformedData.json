@@ -1,0 +1,206 @@
+[
+  {
+    "ProID": 1,
+    "CtgryID": 1,
+    "ProName": "Smartphone X10",
+    "ProDescrptn": "A high-performance smartphone with a sleek design.",
+    "Color": [
+      "000000ff",
+      "842c50ff"
+    ],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo2.jpg.jpg",
+      "https://storage.googleapis.com/ecphotos/photo1.jpg.jpg"
+    ],
+    "Prices": [
+      699.99,
+      689.99
+    ],
+    "Attributes": []
+  },
+  {
+    "ProID": 2,
+    "CtgryID": 1,
+    "ProName": "Wireless Earbuds",
+    "ProDescrptn": "High-quality wireless earbuds with noise cancellation.",
+    "Color": [
+      "000000ff"
+    ],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo16.jpg.jpg"
+    ],
+    "Prices": [
+      129.99
+    ],
+    "Attributes": []
+  },
+  {
+    "ProID": 3,
+    "CtgryID": 2,
+    "ProName": "Women’s Jeans",
+    "ProDescrptn": "Stylish and comfortable jeans for women.",
+    "Color": [
+      "5bbac7ff",
+      "7c5bc7ff",
+      "5bc784ff|5bbac7ff|842c50ff",
+      "842c50ff"
+    ],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo19.jpg.jpg",
+      "https://storage.googleapis.com/ecphotos/photo18.jpg.jpg",
+      "https://storage.googleapis.com/ecphotos/photo17.jpg.jpg"
+    ],
+    "Prices": [
+      49.99,
+      50.99,
+      51.99
+    ],
+    "Attributes": [
+      {
+        "name": "size",
+        "valueAttr": [
+          "S",
+          "M",
+          "XL"
+        ]
+      }
+    ]
+  },
+  {
+    "ProID": 4,
+    "CtgryID": 4,
+    "ProName": "Men’s T-Shirt",
+    "ProDescrptn": "A comfortable cotton t-shirt for men.",
+    "Color": [
+      "5bbac7ff",
+      "7c5bc7ff|c35bc7ff",
+      "5bc784ff",
+      "842c50ff",
+      "c35bc7ff"
+    ],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo4.jpg.jpg",
+      "https://storage.googleapis.com/ecphotos/photo3.jpg.jpg"
+    ],
+    "Prices": [
+      19.99,
+      18.99,
+      17.99,
+      22.99
+    ],
+    "Attributes": [
+      {
+        "name": "size",
+        "valueAttr": [
+          "L",
+          "M",
+          "S",
+          "XL"
+        ]
+      }
+    ]
+  },
+  {
+    "ProID": 5,
+    "CtgryID": 5,
+    "ProName": "LED Lamp",
+    "ProDescrptn": "Energy-efficient LED lamp for home and office use.",
+    "Color": [],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo6.jpg.jpg",
+      "https://storage.googleapis.com/ecphotos/photo5.jpg.jpg"
+    ],
+    "Prices": [
+      25.99
+    ],
+    "Attributes": []
+  },
+  {
+    "ProID": 6,
+    "CtgryID": 6,
+    "ProName": "Moisturizing Cream",
+    "ProDescrptn": "Hydrating cream for all skin types.",
+    "Color": [],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo10.jpg.jpg"
+    ],
+    "Prices": [
+      19.99,
+      18.99
+    ],
+    "Attributes": [
+      {
+        "name": "protection",
+        "valueAttr": [
+          "05",
+          "02"
+        ]
+      }
+    ]
+  },
+  {
+    "ProID": 8,
+    "CtgryID": 8,
+    "ProName": "Yoga Mat",
+    "ProDescrptn": "Non-slip yoga mat for home workouts.",
+    "Color": [
+      "5bbac7ff",
+      "f4f70099"
+    ],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo8.jpg.jpg",
+      "https://storage.googleapis.com/ecphotos/photo7.jpg.jpg"
+    ],
+    "Prices": [
+      29.99
+    ],
+    "Attributes": []
+  },
+  {
+    "ProID": 9,
+    "CtgryID": 9,
+    "ProName": "Building Blocks Set",
+    "ProDescrptn": "Colorful building blocks for kids aged 3+.",
+    "Color": [
+      "5bc784ff",
+      "842c50ff"
+    ],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo14.jpg.jpg",
+      "https://storage.googleapis.com/ecphotos/photo13.jpg.jpg",
+      "https://storage.googleapis.com/ecphotos/photo12.jpg.jpg"
+    ],
+    "Prices": [
+      24.99
+    ],
+    "Attributes": []
+  },
+  {
+    "ProID": 10,
+    "CtgryID": 10,
+    "ProName": "Fiction Bestseller",
+    "ProDescrptn": "A thrilling novel from a best-selling author.",
+    "Color": [],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo9.jpg.jpg"
+    ],
+    "Prices": [
+      14.99
+    ],
+    "Attributes": []
+  },
+  {
+    "ProID": 11,
+    "CtgryID": 11,
+    "ProName": "Portable USB Fan",
+    "ProDescrptn": "Compact USB-powered fan for personal use.",
+    "Color": [],
+    "Images": [
+      "https://storage.googleapis.com/ecphotos/photo15.jpg.jpg"
+    ],
+    "Prices": [
+      15.99
+    ],
+    "Attributes": []
+  }
+]
