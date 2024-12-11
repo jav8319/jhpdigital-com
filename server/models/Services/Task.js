@@ -12,11 +12,11 @@ TaskCode.init(
     autoIncrement: true,
   },
 
-TaskCode: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-   
+  TaskCode: {
+    type: DataTypes.STRING, 
+    allowNull: false,
+  },
+
   },
   {
     sequelize,

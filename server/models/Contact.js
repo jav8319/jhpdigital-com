@@ -1,14 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class User extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
+class Contact extends Model {
 }
 
-User.init(
+Contact.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -29,6 +25,12 @@ User.init(
         isEmail: true,
       },
     },
+
+    phone_number: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+
     address: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -36,46 +38,20 @@ User.init(
       validate: {
         isEmail: true,
       },
-    },
 
-    role: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: 'user',
-    },
-
-    resetPasswordToken: {
-type: DataTypes.STRING,
-allowNull: true,
 
     },
-    resetPasswordExpires:{
-type: DataTypes.DATE,
-allowNull: true,
-    },
-
-
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      },
   },
   {
-    hooks: {
-      async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
-      },
-    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'users',
+    modelName: 'contacts',
   }
 );
 
-module.exports = User;
+module.exports = Contact;
 
 
 // const { Model, DataTypes } = require('sequelize');

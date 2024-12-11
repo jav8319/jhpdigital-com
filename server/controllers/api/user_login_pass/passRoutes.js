@@ -3,15 +3,13 @@ const {User} = require('../../../models');
 const withAuth = require('../../../utils/auth');
 const bcrypt = require('bcrypt');
 
-
 router.post('/', withAuth, async (req, res) => {
   let passedpassword = req.body.password
-
   
 try {
   const user = await User.findOne({
       where: {
-          email: req.body.email
+          email: req.session.email
       }
   });
 
@@ -22,7 +20,7 @@ try {
     // update the user's password in the database
     const updated = await User.update({ password: hashedPassword }, {
       where: {
-        email: req.body.email
+        email: req.session.email
       }
     });
     if(updated){
@@ -36,9 +34,12 @@ try {
   // You can also use this user object within this scope
 
 } catch (err) {
-  console.error(err);
+  console.log(err);
+  res.status(500).json(err);
 }
   
 });
+
+
 
 module.exports = router;

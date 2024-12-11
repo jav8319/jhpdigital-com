@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../../config/connection');
+const sequelize = require('../../../config/connection');
 
-class TeachingJob extends Model {} // Booked maintenance orders
+class MaintenanceJob extends Model {} // Booked maintenance orders
 
-TeachingJob.init(
+MaintenanceJob.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,7 +11,7 @@ TeachingJob.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    TeachingJobName: {
+    MaintenanceName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -28,20 +28,16 @@ TeachingJob.init(
       type: DataTypes.INTEGER,//seconds
       allowNull: false,
     },
-    PreviousT_job: {
+    PreviousM_job: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
 
-    TaskID: {
-      type: DataTypes.INTEGER,
+    TaskCode: {
+      type: DataTypes.STRING, 
       allowNull: false,
-      references: {
-        model: 'tasks_codes', // name of the related table
-        key: 'id',
-      },
     },
-    
+
     Obsolete: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -52,11 +48,11 @@ TeachingJob.init(
     timestamps: true, // Enables the use of createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'teaching_jobs',
+    modelName: 'maintenance_jobs',
   }
 );
 
-module.exports = TeachingJob;
+module.exports = MaintenanceJob;
 
 
 

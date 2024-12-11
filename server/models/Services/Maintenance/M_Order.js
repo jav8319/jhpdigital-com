@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../../config/connection');
+const sequelize = require('../../../config/connection');
 
 class M_order extends Model {} // Booked maintenance orders
 
@@ -21,12 +21,11 @@ M_order.init(
     },
     Address: {
       type: DataTypes.STRING,  
-      allowNull: true,
+      allowNull: false,
     },
     Email: {
       type: DataTypes.STRING,
-      allowNull: true,
-      unique: true,
+      allowNull: false,
       validate: {
         isEmail: true, // Validates that the value is a valid email address
       },
@@ -45,32 +44,17 @@ M_order.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    ScheduledDateStart: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
 
-nextScheduledDateStart: {
+    NextSubMaintdDate: {
       type: DataTypes.DATE,
       allowNull: true,
     },
-    
-    MaintenanceID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'maintenance_jobs', // name of the related table 
-        key: 'id',
-      },
-    },
+
     TransactionValue: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
-    JobDuration: {
-      type: DataTypes.INTEGER,//seconds
-      allowNull: false,
-    },
+
     TermsAgreed: {
       type: DataTypes.TEXT,
       allowNull: false,

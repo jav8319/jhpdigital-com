@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { TeachingJob } = require('../../../models');
+const withAuth = require('../../../utils/auth');
+const { TeachingJob, TaskCode } = require('../../../models');
+const randomString = require('../../../utils/genRandomCodeg');
 
 // Endpoint to create a new teaching job
-router.post('/', async (req, res) => {
+router.post('/', withAuth,  async (req, res) => {
   try {
+
+    const TaskCode = randomString(8);
     const { TeachingJobName, Description, Price, Duration, PreviousT_job, Obsolete } = req.body;
 
     // Validate required fields
@@ -27,8 +31,12 @@ router.post('/', async (req, res) => {
       Price,
       Duration,
       PreviousT_job,
+      TaskCode: TaskCode,
       Obsolete: Obsolete || false, // Default to false if not provided
     });
+
+
+await TaskCode.create({TaskCode: TaskCode})
 
     res.status(201).json({
       message: 'Teaching job created successfully.',

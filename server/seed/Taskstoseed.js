@@ -5,7 +5,6 @@ const teachingJobs = [
       Price: 49.99,
       Duration: 3600, // 1 hour in seconds
       PreviousT_job: null,
-      TaskID: 1, // Assuming TaskID 1 exists in tasks_codes
       Obsolete: false,
     },
     {
@@ -14,7 +13,6 @@ const teachingJobs = [
       Price: 59.99,
       Duration: 5400, // 1.5 hours in seconds
       PreviousT_job: null,
-      TaskID: 2, // Assuming TaskID 2 exists in tasks_codes
       Obsolete: false,
     },
     {
@@ -23,7 +21,6 @@ const teachingJobs = [
       Price: 79.99,
       Duration: 7200, // 2 hours in seconds
       PreviousT_job: null,
-      TaskID: 3, // Assuming TaskID 3 exists in tasks_codes
       Obsolete: false,
     },
     {
@@ -32,7 +29,6 @@ const teachingJobs = [
       Price: 39.99,
       Duration: 3600, // 1 hour in seconds
       PreviousT_job: null,
-      TaskID: 4, // Assuming TaskID 4 exists in tasks_codes
       Obsolete: false,
     },
   ];
@@ -44,7 +40,6 @@ const teachingJobs = [
       Price: 49.99,
       Duration: 3600, // 1 hour in seconds
       PreviousM_job: null,
-      TaskID: 5, // Assuming JobCode 1 exists in tasks_codes
       Obsolete: false,
     },
     {
@@ -53,7 +48,6 @@ const teachingJobs = [
       Price: 29.99,
       Duration: 1800, // 30 minutes in seconds
       PreviousM_job: null,
-      TaskID: 6, // Assuming JobCode 2 exists in tasks_codes
       Obsolete: false,
     },
     {
@@ -62,7 +56,6 @@ const teachingJobs = [
       Price: 39.99,
       Duration: 2700, // 45 minutes in seconds
       PreviousM_job: null,
-      TaskID: 7, // Assuming JobCode 3 exists in tasks_codes
       Obsolete: false,
     },
   ];

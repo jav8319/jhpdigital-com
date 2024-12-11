@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
+const MaintBooking = require('./Maintenance/MaintBooking');
 
 class Availability extends Model {}
 
@@ -45,5 +46,3 @@ Availability.init(
 );
 
 module.exports = Availability;
-
-

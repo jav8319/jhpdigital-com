@@ -10,13 +10,16 @@ const ProductSpec = require('./Store/ProductSpec');
 const Spec= require('./Store/Spec');
 const Subcategory = require('./Store/Subcategory');
 const ProdCode = require('./Store/ProdCode');
-const M_Order = require('./Services/M_Order');
-const MaintenanceJob = require('./Services/MaintenanceJob');
-const MaintBooking = require('./Services/MaintBooking');
-const TeachingBooking = require('./Services/TeachingBooking');
-const T_Order = require('./Services/T_Order');
+
+const M_Order = require('./Services/Maintenance/M_Order.js');
+const MaintenanceJob = require('./Services/Maintenance/MaintenanceJob');
+const MaintBooking = require('./Services/Maintenance/MaintBooking');
+
+const TeachingBooking = require('./Services/Teaching/TeachingBooking');
+const T_Order = require('./Services/Teaching/T_Order');
+const TeachingJob = require('./Services/Teaching/TeachingJob');
+
 const UserTask = require('./Services/UserTask');
-const TeachingJob = require('./Services/TeachingJob');
 const Availability = require('./Services/Availability');
 const Task = require('./Services/Task');
 
@@ -66,49 +69,44 @@ ProdCode.belongsToMany(P_Order, {
   otherKey: 'P_OrderID',
 });
 
+
+
 Availability.belongsTo(User, {
   foreignKey: 'UserID',
   onDelete: 'CASCADE',
 });
 
 
-M_Order.hasMany(MaintenanceJob, {
-  foreignKey: 'MaintenanceID',
-  onDelete: 'CASCADE',
-});
 
 MaintenanceJob.belongsToMany(User, {
   through: MaintBooking,
-  foreignKey: 'UserID',
-  otherKey: 'MaintJobId',
+  foreignKey: 'MaintJobId',
+  otherKey: 'UserID',
 });
 
-MaintenanceJob.hasOne((Task), {
-  foreignKey: 'TaskID',
-  onDelete: 'CASCADE',
-});
-
-T_Order.hasMany(TeachingJob, {
-  foreignKey: 'TeachingJobID',
-  onDelete: 'CASCADE',
+MaintenanceJob.belongsToMany(M_Order, {
+  through: MaintBooking,
+  foreignKey: 'MaintJobId',
+  otherKey: 'MaintOrderID',
 });
 
 
 TeachingJob.belongsToMany(User, {
   through: TeachingBooking,
-  foreignKey: 'UserID',
-  otherKey: 'TeachingJobId',
+  foreignKey: 'TeachingJobId',
+  otherKey: 'UserID',
+});
+TeachingJob.belongsToMany(T_Order, {
+  through: TeachingBooking,
+  foreignKey: 'TeachingJobId',
+  otherKey: 'TeachOrderID',
 });
 
 
-TeachingJob.hasOne((Task), {
-  foreignKey: 'TaskID',
-  onDelete: 'CASCADE',
-});
-
-User.hasMany(UserTask, {
-  foreignKey: 'UserID',
-  onDelete: 'CASCADE',
+Task.belongsToMany(User, {
+  through: UserTask,
+  foreignKey: 'taskID',
+  otherKey: 'UserID',
 });
 
 module.exports = {
@@ -134,3 +132,28 @@ MaintBooking,
 Availability,
 Task
 };
+
+
+
+
+
+// ModelA.belongsToMany(ModelC, {
+//   through: MoldelB,
+//   foreignKey: 'XX',//Located in ModelB referencing ModelA
+//   otherKey: 'YY',//Located in ModelB referencing ModelC
+// });
+
+// ModelD.belongsTo(ModelE, {
+//   foreignKey: 'KK',//Located in ModelD referencing ModelE
+//   onDelete: 'CASCADE',
+// });
+
+// ModelW.hasMany(ModelM, {
+//   foreignKey: 'GG',//Located in ModelM referencing ModelW
+//   onDelete: 'CASCADE',
+// });
+
+// ModelJ.hasOne(ModelU, {
+//   foreignKey: 'PP',//Located in ModelU referencing ModelJ
+//   onDelete: 'CASCADE',
+// });

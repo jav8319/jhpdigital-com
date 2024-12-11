@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../../config/connection');
+const sequelize = require('../../../config/connection');
 
 class TeachingBooking extends Model {} // Booked maintenance orders
 
 TeachingBooking.init(
+  
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,10 +12,10 @@ TeachingBooking.init(
       primaryKey: true,
       autoIncrement: true,
     },
-
     TeachingJobId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'teaching_job_id', 
       references: {
         model: 'teaching_jobs', // name of the related table 
         key: 'id',
@@ -24,8 +25,19 @@ TeachingBooking.init(
     UserID: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'user_i_d',
       references: {
         model: 'users', // name of the related table
+        key: 'id',
+      },
+    },
+
+    TeachOrderID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'teach_order_i_d',
+      references: {
+        model: 't_orders', // name of the related table 
         key: 'id',
       },
     },
@@ -35,7 +47,7 @@ TeachingBooking.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    dateEndtScheduled: {
+    dateEndScheduled: {
       type: DataTypes.DATE,
       allowNull: false,
     },
@@ -44,9 +56,6 @@ TeachingBooking.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-
-
-
   },
   {
     sequelize,
@@ -54,6 +63,11 @@ TeachingBooking.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'teaching_bkgs',
+    uniqueKeys: {
+      teach_booking_unique: {
+        fields: ['user_i_d', 'teaching_job_id', 'teach_order_i_d'], // Use underscored names
+      },
+    },
   }
 );
 

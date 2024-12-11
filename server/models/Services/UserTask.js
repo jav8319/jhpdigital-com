@@ -13,7 +13,7 @@ UserTask.init(
         key: 'id',
       },
     },
-taskID: {
+  taskID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -25,12 +25,14 @@ taskID: {
     isApproved: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false,
     },
 
-
-
-
-   
+    isRequested: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
   },
   {
     sequelize,

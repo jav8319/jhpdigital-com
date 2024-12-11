@@ -25,7 +25,6 @@ P_Order.init(
     Email: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
       validate: {
         isEmail: true, // Validates that the value is a valid email address
       },

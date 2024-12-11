@@ -1,9 +1,9 @@
   const ordersProducts = [
     {
-      Name: 'John Doe',
+      Name: 'Johny Doe',
       Phone: '123-456-7890',
       Address: '123 Main Street, Toronto, ON',
-      Email: 'johndoe@example.com',
+      Email: 'johndoy22e@example.com',
       TransactionValue: 200.00,
       TransactionRefNum1: 'REF12345',
       TransactionRefNum2: 'ALT12345',
@@ -18,10 +18,10 @@
       TransactionRefNum2: 'ALT54321',
     },
     {
-      Name: 'Alice Johnson',
+      Name: 'Alice Cooper',
       Phone: '555-666-7777',
       Address: '789 Oak Street, Oakville, ON',
-      Email: 'alice.j@example.com',
+      Email: 'alicecooperj@example.com',
       TransactionValue: 300.00,
       TransactionRefNum1: 'REF67890',
       TransactionRefNum2: null,
@@ -66,7 +66,7 @@
       Name: 'Grace Black',
       Phone: '111-222-3333',
       Address: '333 Spruce Street, London, ON',
-      Email: 'graceb@example.com',
+      Email: 'graceb200@example.com',
       TransactionValue: 275.60,
       TransactionRefNum1: 'REF44556',
       TransactionRefNum2: null,
