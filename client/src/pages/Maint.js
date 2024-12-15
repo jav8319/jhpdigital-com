@@ -48,9 +48,12 @@ function MaintForm() {
   };
 
   return (
-    <div className="container my-5">
-      <h2 className="text-center mb-4">Reserva tu Mantenimiento o Reparación</h2>
-
+    <div className="px-2 custom-bckg-color">
+      <h2 className="text-center mb-4 custom-card-title">Reserva tu Mantenimiento o Reparación</h2>
+      <h3 className="text-center mb-4 text-dark">Reparamos y 
+        hacemos mantenimiento a gran variedad de equipos, desde computadores, 
+        portatiles y consolas de juego.Para negocios puede programar un 
+        mantenimiento recurrente</h3>
       {step === 1 && (
         <StepOneForm formData={formData} onChange={handleChange} onNext={handleNext} />
       )}

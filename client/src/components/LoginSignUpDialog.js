@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import { useStoreContext } from '../utils/GlobalState';
-import { LOGIN_USER } from '../utils/actions';
+import React, { useState } from "react";
+import { Modal, Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useStoreContext } from "../utils/GlobalState";
+import { LOGIN_USER } from "../utils/actions";
 import { Api } from "../utils/api";
 
-
 function LoginSignUpDialog({ toggleDialog }) {
-  const [isLogin, setIsLogin] = useState(true); // Toggle between login and sign-up
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [forgotPassword, setForgotPassword] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetMessage, setResetMessage] = useState("");
+  const [resetError, setResetError] = useState("");
   const [, dispatch] = useStoreContext();
   const navigate = useNavigate();
 
@@ -21,96 +19,127 @@ function LoginSignUpDialog({ toggleDialog }) {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const endpoint = isLogin ? '/user/login' : '/user';
-
     try {
-      console.log('formdata',formData);
-      console.log('enpoint',endpoint);
-      console.log('enpoint',Api);
-      const response = await Api.post(`${endpoint}`, formData);
+      const response = await Api.post("/user/login", formData);
 
       if (response.status === 200) {
-        console.log('response',response);
-        dispatch({ type: LOGIN_USER, login: true });
-        navigate('/admin/availability'); // Navigate to the Admin route
+        dispatch({
+          type: LOGIN_USER,
+          login: true,
+          userType: response.data.userType,
+        });
+        navigate("/availability"); // Navigate to the Admin route
         toggleDialog(); // Close the dialog
       } else {
-       
-        alert('An error occurred');
+        alert("Ocurrio un error.");
       }
-
-      console.log('response',response);
     } catch (err) {
-      console.error('Error:', err);
-      alert('Failed to connect to the server.');
+      console.error("Error:", err);
+      alert("Usuario no autorizado.");
+    }
+  };
+
+  const handleResetRequest = async () => {
+    try {
+      const response = await Api.post("/forgot-password", { email: resetEmail });
+      if (response.status === 200) {
+        setResetMessage("Se envio link a tu correo.");
+        setResetError("");
+      } else {
+        setResetError("Algo salio mal.");
+        setResetMessage("");
+      }
+    } catch (err) {
+      setResetError("Error connecting to the server.");
+      setResetMessage("");
+      console.error("Error:", err);
     }
   };
 
   return (
     <Modal show onHide={toggleDialog} centered>
       <Modal.Header closeButton>
-        <Modal.Title>{isLogin ? 'Login' : 'Sign Up'}</Modal.Title>
+        <Modal.Title>{forgotPassword ? "Recuperar contrasena" : "Login"}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          {!isLogin && (
-            <Form.Group className="mb-3" controlId="formUsername">
-              <Form.Label>Username</Form.Label>
+        {!forgotPassword ? (
+          <Form onSubmit={handleLogin}>
+            <Form.Group className="mb-3" controlId="formEmail">
+              <Form.Label>Email</Form.Label>
               <Form.Control
-                type="text"
-                name="username"
-                placeholder="Enter your username"
-                value={formData.username}
+                type="email"
+                name="email"
+                placeholder="ingresa email"
+                value={formData.email}
                 onChange={handleChange}
-                required={!isLogin}
+                required
               />
             </Form.Group>
-          )}
-          <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit" className="w-100">
-            {isLogin ? 'Login' : 'Sign Up'}
-          </Button>
-        </Form>
+            <Form.Group className="mb-3" controlId="formPassword">
+              <Form.Label>Contrasena</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="ingresa contrasena"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit" className="w-100">
+              Login
+            </Button>
+            <div className="text-center mt-3">
+              <Button
+                variant="link"
+                onClick={() => setForgotPassword(true)}
+                className="text-primary"
+              >
+                Recuperar?
+              </Button>
+            </div>
+          </Form>
+        ) : (
+          <div>
+            <Form.Group className="mb-3" controlId="formResetEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Ingresa tu email"
+                value={resetEmail}
+                onChange={(e) => setResetEmail(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              className="w-100"
+              onClick={handleResetRequest}
+            >
+              Enviar link
+            </Button>
+            {resetMessage && (
+              <div className="alert alert-success mt-3">{resetMessage}</div>
+            )}
+            {resetError && (
+              <div className="alert alert-danger mt-3">{resetError}</div>
+            )}
+            <div className="text-center mt-3">
+              <Button
+                variant="link"
+                onClick={() => setForgotPassword(false)}
+                className="text-primary"
+              >
+                Volver
+              </Button>
+            </div>
+          </div>
+        )}
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={() => setIsLogin(!isLogin)}>
-          Switch to {isLogin ? 'Sign Up' : 'Login'}
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }
 
 export default LoginSignUpDialog;
-
-
-
-
-
-
-
-
-

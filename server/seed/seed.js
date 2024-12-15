@@ -204,24 +204,36 @@ seedDataBase = async () => {
         const myuserscreated =   await models.User.bulkCreate(users, { individualHooks: true })
         const availabilities = [];
         if(myuserscreated&&myuserscreated.length>0){
-            for (let userId = 1; userId <= myuserscreated.length; userId++) {
+            for (let userId = 2; userId <= myuserscreated.length+1; userId++) {
                 for (let day = 0; day < 7; day++) {
-                    const range1 = getRandomTimeRange();
-                    const range2 = getRandomTimeRange();
-                    availabilities.push(
-                        {
-                            UserID: userId,
-                            WeekDay: day,
-                            InitialHour: range1.initialHour,
-                            FinalHour: range1.finalHour,
-                        },
-                        {
-                            UserID: userId,
-                            WeekDay: day,
-                            InitialHour: range2.initialHour,
-                            FinalHour: range2.finalHour,
-                        }
-                    );
+                    const range1 = getRandomTimeRange1();
+                    const range2 = getRandomTimeRange2(range1.finalHour);
+                    if(range2!==null){
+                        availabilities.push(
+                            {
+                                UserID: userId,
+                                WeekDay: day,
+                                InitialHour: range1.initialHour,
+                                FinalHour: range1.finalHour,
+                            },
+                            {
+                                UserID: userId,
+                                WeekDay: day,
+                                InitialHour: range2.I,
+                                FinalHour: range2.F,
+                            }
+                        );
+                    }else{
+                        availabilities.push(
+                            {
+                                UserID: userId,
+                                WeekDay: day,
+                                InitialHour: range1.initialHour,
+                                FinalHour: range1.finalHour,
+                            }
+                        );
+                    }
+        
                 }
             }
         }   
@@ -398,13 +410,65 @@ seedDataBase = async () => {
 
 seedDataBase();
 
-const getRandomTimeRange = () => {
-const startHour = Math.floor(Math.random() * (16 - 8)) + 8; // Random hour between 8 AM and 3 PM
-const duration = Math.floor(Math.random() * 3) + 1; // Random duration between 1 and 3 hours
+const getRandomTimeRange1 = () => {
+    let startHour = 0
+    let duration = 0
+startHour = Math.floor(Math.random() * (11)) + 6; // Random hour between 8 AM and 3 PM
+
+duration = Math.floor(Math.random() * 6) + 3; // Random duration between 1 and 3 hours
+let cointest = Math.floor(Math.random() * (3))
+if(duration+startHour>20&&cointest===1){
+    duration = 3
+    startHour = 17
+}
+if(duration+startHour>20&&cointest===2){
+    duration = 5
+    startHour = 14
+}
+if(duration+startHour>20&&cointest===0){
+    duration = 6
+    startHour = 12
+}
+
+
 const initialHour = `${String(startHour).padStart(2, '0')}:00:00`;
 const finalHour = `${String(startHour + duration).padStart(2, '0')}:00:00`;
 return { initialHour, finalHour };
 };
+const getRandomTimeRange2 = (finalHour2) => {
+    let starthourstr=0
+    let  durationstr=0
+    let I=''
+    let F=''
+    let overtime = false
+    const arrelemF = finalHour2.split(':').map(Number)
+    const hoursF = arrelemF[0]
+    let cointest = Math.floor(Math.random() * (3))
+    if(hoursF<15&&cointest>=1){
+        overtime = true
+        starthourstr = Math.floor(Math.random() * (5)) + 15; // Random hour between 8 AM and 
+        durationstr = Math.floor(Math.random() * 4) + 2; // Random duration between 1 and 3 hours
+        if(durationstr+starthourstr>20&&cointest===1){
+            durationstr = 2
+            starthourstr = 18
+        }
+        if(durationstr+starthourstr>20&&cointest===2){
+            durationstr = 3
+            starthourstr = 16
+        }
+    }
+    I = `${String(starthourstr).padStart(2, '0')}:00:00`;
+    F = `${String( durationstr + starthourstr).padStart(2, '0')}:00:00`;
+    if(overtime===true){
+        return {I, F};
+    }else{
+        return null
+    }
+};
+
+
+
+
 function generateRandomString(length) {
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 let result = '';

@@ -1,121 +1,150 @@
 const path = require('path');
-require('dotenv').config();
+require('dotenv').config({path: '../.env'});
 const express = require('express');
 const session = require('express-session');
 const routes = require('./controllers');
-const models  = require('./models');
+const models = require('./models');
 const cors = require('cors');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection');
 const cookieParser = require('cookie-parser');
+const nodemailer = require('nodemailer');
 
 const app = express();
+
 const PORT = process.env.PORT || 3001;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+console.log('Environment:', NODE_ENV);
+const isProduction = NODE_ENV === 'production';
+const isTest = NODE_ENV === 'test';
 
-let myenv=process.env.ENVIRONMENT
-let securedef
-let strict
+const sessionSecure = isProduction || isTest;
+const sameSitePolicy = isProduction ? 'strict' : 'lax';
 
-if(myenv==='production'||myenv==='test'){
- securedef=true
- strict='strict'
-}else{
- strict='lax'
+const myStore = new SequelizeStore({ db: sequelize });
+if (NODE_ENV === 'development') {
+  app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  }));
 }
-
-var myStore = new SequelizeStore({
- db: sequelize,
-});
-
-if(myenv==='development'){
- app.use(cors({
-  origin:  'http://localhost:3000',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true
- }));
-}
-
-const sess = {
- secret: 'Super secret secret',
- cookie: {
-  maxAge: 24*3*1000,
-  httpOnly: true,
-  secure: securedef,
-  sameSite: strict,
- },
- resave: false,
- saveUninitialized: false,
- store: myStore
+const sessionConfig = {
+  secret: process.env.SESSION_SECRET || 'Super secret secret',
+  cookie: {
+    maxAge:30 * 60 * 1000, // 3 days
+    httpOnly: true,
+    secure: sessionSecure,
+    sameSite: sameSitePolicy,
+  },
+  resave: false,
+  saveUninitialized: false,
+  store: myStore,
 };
 
 app.use(cookieParser());
-app.use(session(sess));
-
+app.use(session(sessionConfig));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-if (process.env.NODE_ENV === 'production') {
+
+if (isProduction) {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.get('/', (req, res) => { 
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-
-app.use(async (req, res, next) => {
-
-  try {
-    const emailadmin=process.env.ADMIN_EMAIL
-  let findadmin= await models.User.findOne({ where: { email: emailadmin }} );
-  if (!findadmin) {
-    const adminpass = generateRandomString(10);
-    const appointmentsender=process.env.APPOINTMENTSENDER
-    const appsenderpass=process.env.APPSENDERPASS 
-    const appsendermail=process.env.APPSENDERMAIL
-   
-    await models.User.create({
-      username: "administrador",
-      email: emailadmin,
-      password: adminpass,
-      role: 'admin',
-      address:'my mail address'
-    });
-
-      let transporter = nodemailer.createTransport({
-        service: appsendermail,
-        auth: {
-          user: appointmentsender,
-          pass: appsenderpass,
-        },
-      });
-      let mailOptions = {
-        from: appointmentsender,
-        to: appointmentsender,
-        subject: 'Usuario administrador creado',
-        text: `Tu cuenta de administrador ha sido creada con éxito.\n\n\n\nUsuario: administrador\n\nContraseña: ${adminpass}`,
-      };
-
-        await transporter.sendMail(mailOptions);
-        console.log('Email sent successfully');
- }
-  next();
-} catch (err) {
-  console.error(err);
-  res.status(500).send('Internal server error');
-}
+app.get('/acerca', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/mantenimiento' , (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/clases', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/tienda', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/unirse", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/availability", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/mant_admin", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/clases_admin", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/ver_producto", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/crear_producto", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/ver_habilidades", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/ver_trabajos", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/ver_ordenes", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/mod_clave", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get("/resetpassword/:token", (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  
-  app.listen(PORT, () => console.log('Now listening'));
+  initializeAdminUser();
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
+
 
 function generateRandomString(length) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
+}
+
+async function initializeAdminUser() {
+  try {
+    const emailAdmin = process.env.ADMIN_EMAIL;
+    console.log('Admin email:', emailAdmin);
+
+    let adminExists = await models.User.findOne({ where: { email: emailAdmin } });
+    if (!adminExists) {
+      const adminPassword = generateRandomString(10);
+      await models.User.create({
+        username: "administrator",
+        email: emailAdmin,
+        password: adminPassword,
+        role: 'admin',
+        address: 'Administrator address',
+      });
+      const transporter = nodemailer.createTransport({
+        service: process.env.APPSENDERMAIL,
+        auth: {
+          user: process.env.APPOINTMENTSENDER,
+          pass: process.env.APPSENDERPASS,
+        },
+      });
+      const mailOptions = {
+        from: process.env.APPOINTMENTSENDER,
+        to: emailAdmin,
+        subject: 'Admin Account Created',
+        text: `Your admin account has been successfully created.\n\nUsername: administrator\nPassword: ${adminPassword}`,
+      };
+      await transporter.sendMail(mailOptions);
+      console.log('Admin account created and email sent.');
+    }
+  } catch (error) {
+    console.error('Error during admin user initialization:', error.message);
   }
-  return result;
 }

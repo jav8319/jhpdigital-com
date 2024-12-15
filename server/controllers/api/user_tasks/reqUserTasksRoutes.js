@@ -12,7 +12,7 @@ const EmailNotification = process.env.ADMIN_EMAIL
 
 router.post('/', withAuth, async (req, res) => {
   try {
-    const usertasks = req.usertasks?.body;
+    const usertasks = req.body.usertasks//['cascas', '47gu5uy', '49gi54g549k',]
     if (!usertasks || !Array.isArray(usertasks)) {
       return res.status(400).json({ message: 'Datos de tareas inválidos' });
     }
@@ -38,7 +38,7 @@ router.post('/', withAuth, async (req, res) => {
       ? `${process.env.PRODUCTIONURL}/api/update_user_tasks/${arrurltoemail}`
       : `http://localhost:3000/api/update_user_tasks/${arrurltoemail}`;
 
-    res.status(201).json({ message: 'Se solicitó nuevas tareas correctamente.' });
+    res.status(200).json({ message: 'Se solicitó nuevas tareas correctamente.' });
     sendEmail(req.session.email, req.session.username, urltoemail);
   } catch (error) {
     console.error('Error al crear tareas:', error.message);

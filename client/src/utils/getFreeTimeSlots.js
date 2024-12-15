@@ -19,12 +19,13 @@ export function getFreeTimeSlots(arrayobjs,interval,initialhouri, finalhouri) {
     throw new Error("The arrayobjs must have at least one element"); 
   }
   const checkobjarrayi = arrayobjs.filter((element) => {
-  return element.day<0&&element.day>6&&element.InitialHour<0&&element.InitialHour>=element.FinalHour&&
+  return element.day<0&&element.WeekDay>6&&element.InitialHour<0&&element.InitialHour>=element.FinalHour&&
       element.FinalHour<0
   });
   if (checkobjarrayi.length > 0) {
     throw new Error("The availability can't be computed with the current parameters.");
   }
+
   let slots = [];
   let maxiterations = ((finalhouri*1) - (initialhouri*1)) / (interval*1)
   for (let day = 0; day <= 6; day++) {
@@ -32,11 +33,12 @@ export function getFreeTimeSlots(arrayobjs,interval,initialhouri, finalhouri) {
         const Starthour = ((initialhouri*1)-(interval*1))+(kk*(interval*1))
         const Finalhour= ((initialhouri*1))+(kk*(interval*1))
         if(kk!==0){
-            slots.push({ day:day, InitialHour: Starthour, FinalHour: Finalhour });
+            slots.push({ WeekDay:day, InitialHour: Starthour, FinalHour: Finalhour });
         }
         
     }
   }
+  
   const availableslots=slots.filter((slot) => {
     let result=true
     let daynumber=0
@@ -45,14 +47,14 @@ export function getFreeTimeSlots(arrayobjs,interval,initialhouri, finalhouri) {
     let myslotinitialhour=0
     let myslotfinalhour=0
     let myslotdaynumber=0
-    myslotdaynumber=slot.day
+    myslotdaynumber=slot.WeekDay
     myslotinitialhour=slot.InitialHour
     myslotfinalhour=slot.FinalHour
     let findoverlap=arrayobjs.find((element) => {
-        daynumber=element.day
+        daynumber=element.WeekDay
         myinitialhour=element.InitialHour
         myfinalhour=element.FinalHour
-        if(myslotdaynumber===element.day){
+        if(myslotdaynumber===daynumber){
             return (myinitialhour===myslotinitialhour)||
             ((myslotinitialhour < myfinalhour) && (myslotinitialhour >= myinitialhour))||
             ((myslotfinalhour > myinitialhour) && (myslotfinalhour <= myfinalhour))||
@@ -67,20 +69,21 @@ export function getFreeTimeSlots(arrayobjs,interval,initialhouri, finalhouri) {
     }
     return result
   });
+
   function sortByDayAndHour(array) {
     return array.sort((a, b) => {
-        if (a.day === b.day) {
+        if (a.WeekDay === b.WeekDay) {
         return a.InitialHour - b.InitialHour; // Sort by InitialHour if days are the same
         }
-        return a.day - b.day; // Otherwise, sort by day
+        return a.WeekDay - b.WeekDay; // Otherwise, sort by day
     });
   }
-  const sortarray=sortByDayAndHour(availableslots);
-  const newarr = sortarray.map((element) => element.day);
+    const sortarray=sortByDayAndHour(availableslots);
+  const newarr = sortarray.map((element) => element.WeekDay);
   const unique = [...new Set(newarr)];
-  let myuniquearray=[]
+    let myuniquearray=[]
   for (const element of unique) {
-    const arraytocheck=sortarray.filter((slot) => slot.day === element);
+    const arraytocheck=sortarray.filter((slot) => slot.WeekDay === element);
     const myorderarry=sortByDayAndHour(arraytocheck)
     const firstelement = myorderarry[0]
     const lastelement = myorderarry[myorderarry.length-1]
@@ -119,13 +122,13 @@ export function getFreeTimeSlots(arrayobjs,interval,initialhouri, finalhouri) {
                     if(initialhourtocheck!==undefined&&initialhourtocheck!==InitialHourlastelement){
                         indexoffirstelement=indextofind-(i-1)
                         const firselementtopushhere=myorderarry[indexoffirstelement].InitialHour
-                        const elementtopushhere={day:element,InitialHour:firselementtopushhere,FinalHour:elementfound.FinalHour}
+                        const elementtopushhere={WeekDay:element,InitialHour:firselementtopushhere,FinalHour:elementfound.FinalHour}
                         myuniquearray.push(elementtopushhere)
                         found=true
                     }else{
                         indexoffirstelement=indextofind-(i-1)
                         const firselementtopush=myorderarry[indexoffirstelement].InitialHour
-                        const elementtopushhere={day:element,InitialHour:firselementtopush,FinalHour:elementfound.FinalHour}
+                        const elementtopushhere={WeekDay:element,InitialHour:firselementtopush,FinalHour:elementfound.FinalHour}
                         myuniquearray.push(elementtopushhere)
                         maxlopp=1500
                         found=true  
@@ -137,5 +140,6 @@ export function getFreeTimeSlots(arrayobjs,interval,initialhouri, finalhouri) {
         maxlopp++
     }
   }
+  console.log('myuniquearray',myuniquearray)
 return (myuniquearray)
 }

@@ -2,16 +2,20 @@ const express = require('express');
 const router = express.Router();
 const {UserTask, Task} = require('../../../models');
 const withAuth = require('../../../utils/auth');
-// Endpoint to create a new schedule
-router.post('/',withAuth, async (req, res) => {
 
+
+
+router.post('/',withAuth, async (req, res) => {
+if(req.session.role!=='admin'){
+res.status(401).json({message: 'Unauthorized'})
+}
     try {
-const usertasks = req.usertasks.body;
+const usertasks = req.body.usertasks;//{userid:4, usertasks:[cascas,47gu5uy,49gi54g549k,]}
 const myUserTask = []
 for (const element of usertasks) {
   let usertasktofind = await Task.findOne({where: {TaskCode: element}})
   if (usertasktofind) {
-    myUserTask.push({TaskID: usertasktofind.dataValues.id, UserID: req.user.id, isApproved: true, isRequested: true})
+    myUserTask.push({TaskID: usertasktofind.dataValues.id, UserID: req.body.userid, isApproved: true, isRequested: true})
   }
 }
 

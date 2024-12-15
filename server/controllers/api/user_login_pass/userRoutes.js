@@ -3,6 +3,7 @@ const { User } = require('../../../models');
 const nodemailer = require('nodemailer');
 const withAuth = require('../../../utils/auth');
 require('dotenv').config();
+const sequelize = require('../../../config/connection')
 
 const Sender = process.env.APPOINTMENTSENDER;
 const SenderEmail = process.env.APPSENDERMAIL;
@@ -61,10 +62,6 @@ const mypass = generateRandomString(9)
   }
 });
 
-
-
-
-
 // Login
 router.post('/login', async (req, res) => {
   try {
@@ -100,7 +97,7 @@ router.post('/login', async (req, res) => {
       req.session.role = dbUserData.role;
 
         
-      res.status(200).json({ message: 'You are now logged in!' });
+      res.status(200).json({ message: 'You are now logged in!',userType: dbUserData.role });
     });
   } catch (err) {
     console.log(err);
@@ -108,8 +105,24 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get('/checklogin',withAuth, async (req, res) => {
+  try {
+
+  res.status(200).json({ message: 'You are still logged in!' });
+
+ 
+
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 // Logout
 router.post('/logout', (req, res) => {
+
+    // const sessionId = req.cookies['connect.sid']; // Extract session ID from cookies
+  // console.log('************Session ID************', sessionId);
 
     req.session.destroy((err) => {
       if (err) {
@@ -122,6 +135,8 @@ router.post('/logout', (req, res) => {
   
 });
 
+
+// 'wbuGlUgE3ZCO6NZiXcQKFYTgDcXhKvss'
 
 
 

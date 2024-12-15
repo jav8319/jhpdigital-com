@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const withAuth = require('../../../utils/auth');
-const { TeachingJob, TaskCode } = require('../../../models');
+const { TeachingJob, Task } = require('../../../models');
 const randomString = require('../../../utils/genRandomCodeg');
 
 // Endpoint to create a new teaching job
@@ -36,9 +36,9 @@ router.post('/', withAuth,  async (req, res) => {
     });
 
 
-await TaskCode.create({TaskCode: TaskCode})
+    await Task.create({TaskCode: TaskCode})
 
-    res.status(201).json({
+    res.status(200).json({
       message: 'Teaching job created successfully.',
       teachingJob: newTeachingJob,
     });

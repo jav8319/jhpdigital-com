@@ -75,7 +75,13 @@ function ClasesForm() {
     <div className='custom-bckg-color'>
       <div className="container my-2">
         <h2 className="text-center mb-4 custom-card-title">Reserva tu Clase</h2>
-        <h5 className="text-center mb-4">Ofrecemos clases en software Microsoft, Excel, Word, mantenimiento de hardware</h5>
+        <h3 className="text-center mb-4 text-dark">Ofrecemos clases en software Microsoft, Excel, Word, mantenimiento de hardware.Puedes programar tu clase en persona o videoconferencia por Zoom</h3>
+        
+        
+        
+        
+        
+        
         <Form onSubmit={handleSubmit} className="shadow-lg p-4 bg-dark rounded">
           <img style={{ width: "100%", height: "5px", padding: "0", margin: "0px" }} src={image13} alt="separator" />
           <Row className="mb-3">

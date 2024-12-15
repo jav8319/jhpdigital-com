@@ -2,7 +2,7 @@ const crypto = require('crypto'); // Built-in module
 const router = require('express').Router();
 const {User} = require('../../../models');
 const nodemailer = require('nodemailer');
-require('dotenv').config();
+require('dotenv').config({path:'../../../../.env'});
 
 const appointmentsender=process.env.APPOINTMENTSENDER
 const appsenderpass=process.env.APPSENDERPASS 
@@ -34,6 +34,8 @@ async function sendLinkEmail(email, link) {
   }
   
 router.post('/', async (req, res) => {
+  console.log('forgot password route hit');
+  try {
   let fuser = await User.findOne({ where: { email:req.body.email } });
   if (!fuser) {
     return res.status(404).send('User not found.');
@@ -44,16 +46,16 @@ router.post('/', async (req, res) => {
   await fuser.save();
   let resetLink
   if(process.env.ENVIRONMENT==='development'){
-    resetLink = `${productionurl}/resetpassword/${resetToken}`;
+    resetLink = `http://localhost:3000/resetpassword/${resetToken}`;
   }else{
-    resetLink = `localhost:3000/resetpassword/${resetToken}`;
+    resetLink = `${productionurl}/resetpassword/${resetToken}`;
+   
   }
   res.send('Password reset link has been sent to your email.');
   sendLinkEmail(req.body.email, resetLink)
+} catch (error) {
+  console.error('Failed to send email:', error);
+}
 });
 
 module.exports = router;
-
-
-
-

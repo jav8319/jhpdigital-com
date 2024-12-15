@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
+import image13 from '../../Assets/formSeparator.png';
 
 function StepOneForm({ formData, onChange, onNext }) {
   const services = ["Software Básico", "Redes", "Hardware", "Otro"];
@@ -24,7 +25,8 @@ function StepOneForm({ formData, onChange, onNext }) {
   };
 
   return (
-    <Form>
+    <Form className="shadow-lg p-4 bg-dark rounded">
+       <img style={{ width: "100%", height: "5px", padding: "0", margin: "0px" }} src={image13} alt="separator" />
       <Row className="mb-3">
         <Col md={6}>
           <Form.Group controlId="formNombre">
@@ -110,7 +112,7 @@ function StepOneForm({ formData, onChange, onNext }) {
           ))}
         </Form.Select>
       </Form.Group>
-
+<img style={{ width: "100%", height: "5px", padding: "0", margin: "0px" }} src={image13} alt="separator" />
       <Button variant="primary" onClick={onNext} className="w-100">
         Siguiente
       </Button>

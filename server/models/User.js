@@ -32,10 +32,12 @@ User.init(
     address: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+
+    phone_number: {
+      type: DataTypes.STRING,
+      allowNull: true,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
 
     role: {

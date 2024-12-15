@@ -12,11 +12,18 @@ const withAuth = (req, res, next) => {
       return next();
     } else {
       // Session has expired
-      req.session.destroy(err => {
+      // req.session.destroy(err => {
+      //   if (err) {
+      //     return res.status(500).json({ message: 'Failed to destroy session', error: err });
+      //   }
+      //   return res.status(401).json({ message: 'Session expired. Please log in again.' });
+      // });
+      req.session.destroy((err) => {
         if (err) {
-          return res.status(500).json({ message: 'Failed to destroy session', error: err });
+      return res.status(500).json({ message: 'Failed to destroy session', error: err });
+        } else {
+          return   res.status(401).json({ message: 'Session expired. Please log in again.' });
         }
-        return res.status(401).json({ message: 'Session expired. Please log in again.' });
       });
     }
   } else {

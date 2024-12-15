@@ -3,11 +3,12 @@ import { Form, Button } from 'react-bootstrap';
 
 function StepTwoType({ maintenanceType, onChange, onBack, onNext }) {
   return (
-    <Form>
+    <Form className="custom4 p-4 bg-dark rounded">
       <Form.Group controlId="maintenanceType" className="mb-3">
-        <Form.Label>Tipo de Mantenimiento:</Form.Label>
+        <Form.Label className='text-light'>Tipo de Mantenimiento:</Form.Label>
         <Form.Check
           type="radio"
+          className='text-light'
           id="singleMaintenance"
           label="Una sola vez"
           value="Single"
@@ -17,6 +18,7 @@ function StepTwoType({ maintenanceType, onChange, onBack, onNext }) {
         <Form.Check
           type="radio"
           id="recurringMaintenance"
+          className='text-light'
           label="Recurrente"
           value="Recurring"
           checked={maintenanceType === 'Recurring'}

@@ -10,7 +10,7 @@ function RecurringDetails({ formData, onChange, onBack, onSubmit }) {
   console.log('RecurringDetails formData:', formData);
 
   return (
-    <Form>
+    <Form className="custom4 p-4 bg-dark rounded">
       {formData.maintenanceType!=='Single'&&<Form.Group controlId="recurrence" className="mb-3">
         <Form.Label>Frecuencia:</Form.Label>
         <Form.Select

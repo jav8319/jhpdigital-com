@@ -4,7 +4,10 @@ const withAuth = require('../../../utils/auth');
 const bcrypt = require('bcrypt');
 
 router.post('/', withAuth, async (req, res) => {
-  let passedpassword = req.body.password
+
+
+  console.log('**********req body**********',req.body);
+  console.log('*********re ses email************',req.session.email);
   
 try {
   const user = await User.findOne({
@@ -14,8 +17,19 @@ try {
   });
 
   if(user){
+    let mynewpassword = req.body.newpassword
+    let mypassword = req.body.oldpassword
+    
+    const validPassword = user.checkPassword(mypassword);
+  
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password. Please try again!' });
+      return;
+    }
 
-    let hashedPassword = await bcrypt.hash(passedpassword, 10);
+    let hashedPassword = await bcrypt.hash(mynewpassword, 10);
 
     // update the user's password in the database
     const updated = await User.update({ password: hashedPassword }, {

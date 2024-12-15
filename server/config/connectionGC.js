@@ -1,4 +1,4 @@
-require('dotenv').config({path: '../.env'});
+require('dotenv').config({path: '../../.env'});
 const { Storage }= require('@google-cloud/storage') ;
 
 const PROJECTID = process.env.PROJECTID;
