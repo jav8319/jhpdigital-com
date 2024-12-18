@@ -19,7 +19,6 @@ MaintenanceJob.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
-
     Price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
@@ -32,12 +31,18 @@ MaintenanceJob.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-
     TaskCode: {
       type: DataTypes.STRING, 
       allowNull: false,
     },
-
+    DeviceID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'device_types', // name of the related table
+        key: 'id',
+      },
+    },
     Obsolete: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -53,7 +58,3 @@ MaintenanceJob.init(
 );
 
 module.exports = MaintenanceJob;
-
-
-
-

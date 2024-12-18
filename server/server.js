@@ -116,33 +116,41 @@ function generateRandomString(length) {
 async function initializeAdminUser() {
   try {
     const emailAdmin = process.env.ADMIN_EMAIL;
-    console.log('Admin email:', emailAdmin);
-
+    const cityAdmin = process.env.ADMIN_CITY;
+    const stateAdmin = process.env.ADMIN_STATE;
     let adminExists = await models.User.findOne({ where: { email: emailAdmin } });
     if (!adminExists) {
-      const adminPassword = generateRandomString(10);
-      await models.User.create({
-        username: "administrator",
-        email: emailAdmin,
-        password: adminPassword,
-        role: 'admin',
-        address: 'Administrator address',
-      });
-      const transporter = nodemailer.createTransport({
-        service: process.env.APPSENDERMAIL,
-        auth: {
-          user: process.env.APPOINTMENTSENDER,
-          pass: process.env.APPSENDERPASS,
-        },
-      });
-      const mailOptions = {
-        from: process.env.APPOINTMENTSENDER,
-        to: emailAdmin,
-        subject: 'Admin Account Created',
-        text: `Your admin account has been successfully created.\n\nUsername: administrator\nPassword: ${adminPassword}`,
-      };
-      await transporter.sendMail(mailOptions);
-      console.log('Admin account created and email sent.');
+      const adminprovice = await models.Province.create({ProvinceName: stateAdmin});
+      if (adminprovice) {
+        const adminCity = await models.City.create({CityName: cityAdmin, ProvinceID: adminprovice.dataValues.id});
+        if (adminCity) {
+          const adminPassword = generateRandomString(10);
+          await models.User.create({
+            username: "administrator",
+            email: emailAdmin,
+            password: adminPassword,
+            ProvinceID: adminprovice.dataValues.id,
+            CityID: adminCity.dataValues.id,
+            role: 'admin',
+            address: 'Administrator address',
+          });
+          const transporter = nodemailer.createTransport({
+            service: process.env.APPSENDERMAIL,
+            auth: {
+              user: process.env.APPOINTMENTSENDER,
+              pass: process.env.APPSENDERPASS,
+            },
+          });
+          const mailOptions = {
+            from: process.env.APPOINTMENTSENDER,
+            to: emailAdmin,
+            subject: 'Admin Account Created',
+            text: `Your admin account has been successfully created.\n\nUsername: administrator\nPassword: ${adminPassword}`,
+          };
+          await transporter.sendMail(mailOptions);
+          console.log('Admin account created and email sent.'); 
+        }
+      }
     }
   } catch (error) {
     console.error('Error during admin user initialization:', error.message);

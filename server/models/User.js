@@ -45,7 +45,28 @@ User.init(
       allowNull: false,
       defaultValue: 'user',
     },
+    isLive: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
 
+    ProvinceID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'myprovinces', // name of the related table
+        key: 'id',
+      },
+    },
+    CityID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'mycities', // name of the related table
+        key: 'id',
+      },
+    },
     resetPasswordToken: {
 type: DataTypes.STRING,
 allowNull: true,
@@ -55,8 +76,6 @@ allowNull: true,
 type: DataTypes.DATE,
 allowNull: true,
     },
-
-
     password: {
       type: DataTypes.STRING,
       allowNull: false,

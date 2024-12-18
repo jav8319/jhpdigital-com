@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import StepOneForm from '../components/MaintChld/StepOneForm';
 import StepTwoType from '../components/MaintChld/StepTwoType';
+import StepOform from '../components/MaintChld/StepOform';
 import RecurringDetails from '../components/MaintChld/RecurringDetails';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function MaintForm() {
   const [formData, setFormData] = useState({
-    nombre: '',
-    telefono: '',
-    direccion: '',
+    name:'',
+    phone: '',
+    address: '',
     email: '',
-    personas: '',
+    location: '',
+    city: '',
+    province: '',
     date: '',
-    hour: '',
+    time: '',
     services: [],
     maintenanceType: '',
     recurrence: '',
@@ -22,7 +25,7 @@ function MaintForm() {
   const [step, setStep] = useState(1); // Step to control form flow
 
   const handleNext = () => setStep(step + 1);
-  const handleBack = () => setStep(step - 1);
+  const handleBack = () => {setStep(step - 1); setFormData({ ...formData, services: [] })};
 
   const handleChange = (data) => {
     setFormData((prev) => ({ ...prev, ...data }));
@@ -33,19 +36,23 @@ function MaintForm() {
     alert('Formulario enviado con éxito');
     setStep(1); // Reset to the first step
     setFormData({
-      nombre: '',
-      telefono: '',
-      direccion: '',
+      name: '',
+      phone: '',
+      address: '',
+      city: '',
+      Province: '',
       email: '',
-      personas: '',
+      location: '',
       date: '',
-      hour: '',
+      time: '',
       services: [],
       maintenanceType: '',
       recurrence: '',
-      startDate: '',
     });
   };
+
+
+  console.log('*******formData:**********', formData);
 
   return (
     <div className="px-2 custom-bckg-color">
@@ -55,11 +62,16 @@ function MaintForm() {
         portatiles y consolas de juego.Para negocios puede programar un 
         mantenimiento recurrente</h3>
       {step === 1 && (
-        <StepOneForm formData={formData} onChange={handleChange} onNext={handleNext} />
+        <StepOform setFormData={setFormData} onBack={handleBack} formData={formData} onChange={handleChange} onNext={handleNext} />
+      )}
+      {step === 2 && (
+        <StepOneForm setFormData={setFormData} onBack={handleBack} formData={formData} onChange={handleChange} onNext={handleNext} />
       )}
 
-      {step === 2 && (
+      {step === 3 && (
         <StepTwoType
+        setFormData={setFormData} 
+        formData={formData}
           maintenanceType={formData.maintenanceType}
           onChange={(type) => handleChange({ maintenanceType: type })}
           onBack={handleBack}
@@ -67,7 +79,7 @@ function MaintForm() {
         />
       )}
 
-      {step === 3 && (
+      {step === 4 && (
         <RecurringDetails
           formData={formData}
           onChange={handleChange}
@@ -80,3 +92,14 @@ function MaintForm() {
 }
 
 export default MaintForm;
+// let servicespickedinform=formData.services;
+
+// if(servicespickedinform.length>0){
+//   setpickdev(true);
+//   const findserv=servicespickedinform.map((serv) => {
+
+//     return services.find((service) => service.taskCode === serv);
+//   })
+
+//   setpickeddevice(findserv[0].DeviceID);
+// }

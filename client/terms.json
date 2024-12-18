@@ -1,0 +1,149 @@
+
+{
+    "terms_for_maintenance_jobs": {
+      "terms": [
+        {
+          "term": "Maximum waiting time for technician response",
+          "definition": "Once a request for service is made by the customer, a maximum waiting time of 15 minutes will be allowed for a technician to respond. If no response is received, the customer will be notified and invited to make another request."
+        },
+        {
+          "term": "Customer response to technician confirmation",
+          "definition": "When a technician confirms the request and specifies the hour for the job, the customer has 15 minutes to accept the proposed time. If the customer does not respond within this period, the booking table is updated, the technician becomes available for new jobs, and the request is deleted. The customer is notified via email."
+        },
+        {
+          "term": "Deposit for service request",
+          "definition": "Once a service request is accepted by a technician and the customer agrees to the proposed time and estimated cost, the customer must deposit 25000 COP to JHP Digital."
+        },
+        {
+          "term": "Unconfirmed payment or response",
+          "definition": "If the customer does not make the required payment or confirm the service within 15 minutes of the technician's confirmation, the booking is canceled, the request is deleted, and the technician becomes available for new jobs. The customer is notified via email."
+        },
+        {
+          "term": "Technician travel confirmation",
+          "definition": "If both parties confirm the service within the maximum waiting times and the payment is made, the technician receives an email indicating they can proceed to the customer's location. This email is sent after the 25000 COP payment is received."
+        },
+        {
+          "term": "Technician arrival time limit",
+          "definition": "The technician must arrive at the customer's location within one hour of the confirmed start time. If the technician is late by more than one hour, the customer can cancel the job and receive a full refund of the 25000 COP. The server will automatically cancel the job after 1.5 hours, and both parties will be notified via email."
+        },
+        {
+          "term": "Job status updates",
+          "definition": "Once the technician arrives, they must instruct the customer to update the job status by clicking 'Servicio Inicio' in their email. When the job is completed, the customer must click 'Servicio Completado' in their email, which redirects them to the payment gateway for the remaining balance."
+        },
+        {
+          "term": "Estimate limits",
+          "definition": "The final cost of the service, excluding the 25000 COP transportation fee, cannot exceed 10% of the originally estimated amount. The technician can adjust the estimate within this limit during the service."
+        },
+        {
+          "term": "Device restrictions",
+          "definition": "The technician is not obligated to work on devices that were not included in the original service request."
+        },
+        {
+          "term": "Unsolvable issues",
+          "definition": "If the technician cannot resolve the issue, they must provide a clear explanation to the customer, document the reasons in their interface, and recommend further steps."
+        },
+        {
+          "term": "Rescheduling",
+          "definition": "The technician can reschedule a visit for a maximum of two days after the original request. The total repair cost cannot exceed 40% of the device's commercial value."
+        },
+        {
+          "term": "Safety restrictions",
+          "definition": "The technician cannot carry weapons or be accompanied by another person during the service. If the location is deemed unsafe, the technician can refuse the job, and the customer will be refunded the 25000 COP. JHP Digital will evaluate whether to reimburse the technician for transportation costs."
+        },
+        {
+          "term": "Location restrictions",
+          "definition": "The technician cannot be redirected to a different location from the one agreed upon during the service request."
+        },
+        {
+          "term": "Liability disclaimer",
+          "definition": "JHP Digital is not responsible for damages caused by the technician. The technician is responsible for performing the job to the best of their ability."
+        },
+        {
+          "term": "Technician vetting",
+          "definition": "JHP Digital conducts a police background check and interviews each technician to ensure they are qualified for the jobs they undertake."
+        },
+        {
+          "term": "No additional compensation for unpaid jobs",
+          "definition": "If the customer confirms the beginning and completion of a job but no payment beyond the 25000 COP transportation fee is made, JHP Digital retains the 25000 COP, and the technician receives no additional compensation."
+        },
+        {
+          "term": "JHP Digital fees",
+          "definition": "JHP Digital charges a 5% fee on the total amount for the service, which includes the transportation fee. For example, if the total service amount is 35000 COP (25000 COP for transportation and 10000 COP for other services), the technician receives 95% of this amount."
+        }
+      ]
+    },
+
+    "terminos_para_trabajos_de_mantenimiento": {
+        "terminos": [
+        {
+            "termino": "Tiempo máximo de espera para respuesta del técnico",
+            "definicion": "Una vez que el cliente realiza una solicitud de servicio, se permite un tiempo máximo de espera de 15 minutos para que un técnico responda. Si no se recibe respuesta, se notificará al cliente y se le invitará a realizar otra solicitud."
+        },
+        {
+            "termino": "Respuesta del cliente a la confirmación del técnico",
+            "definicion": "Cuando un técnico confirma la solicitud y especifica la hora para el trabajo, el cliente tiene 15 minutos para aceptar la hora propuesta. Si el cliente no responde dentro de este período, la tabla de reservas se actualiza, el técnico queda disponible para nuevos trabajos y la solicitud se elimina. El cliente será notificado por correo electrónico."
+        },
+        {
+            "termino": "Depósito para solicitud de servicio",
+            "definicion": "Una vez que un técnico acepta una solicitud de servicio y el cliente acuerda la hora propuesta y el costo estimado, el cliente debe depositar 25000 COP a JHP Digital."
+        },
+        {
+            "termino": "Falta de pago o confirmación del cliente",
+            "definicion": "Si el cliente no realiza el pago requerido o no confirma el servicio dentro de los 15 minutos posteriores a la confirmación del técnico, la reserva se cancela, la solicitud se elimina y el técnico queda disponible para nuevos trabajos. El cliente será notificado por correo electrónico."
+        },
+        {
+            "termino": "Confirmación de viaje del técnico",
+            "definicion": "Si ambas partes confirman el servicio dentro de los tiempos máximos de espera y se realiza el pago, el técnico recibirá un correo electrónico indicando que puede dirigirse al lugar del cliente. Este correo electrónico se enviará después de recibir el pago de 25000 COP."
+        },
+        {
+            "termino": "Límite de tiempo de llegada del técnico",
+            "definicion": "El técnico debe llegar al lugar del cliente dentro de una hora desde la hora confirmada de inicio. Si el técnico se retrasa más de una hora, el cliente puede cancelar el trabajo y recibir un reembolso completo de los 25000 COP. El servidor cancelará automáticamente el trabajo después de 1.5 horas y ambas partes serán notificadas por correo electrónico."
+        },
+        {
+            "termino": "Actualizaciones de estado del trabajo",
+            "definicion": "Una vez que el técnico llega, debe instruir al cliente para que actualice el estado del trabajo haciendo clic en 'Servicio Inicio' en su correo electrónico. Cuando el trabajo esté finalizado, el cliente debe hacer clic en 'Servicio Completado' en su correo electrónico, lo que lo redirigirá a la pasarela de pago para pagar el saldo restante."
+        },
+        {
+            "termino": "Límites del presupuesto",
+            "definicion": "El costo final del servicio, excluyendo la tarifa de transporte de 25000 COP, no puede exceder el 10% del monto originalmente estimado. El técnico puede ajustar el presupuesto dentro de este límite durante el servicio."
+        },
+        {
+            "termino": "Restricciones de dispositivos",
+            "definicion": "El técnico no está obligado a trabajar en dispositivos que no fueron incluidos en la solicitud de servicio original."
+        },
+        {
+            "termino": "Problemas no resueltos",
+            "definicion": "Si el técnico no puede resolver el problema, debe proporcionar una explicación clara al cliente, documentar las razones en su interfaz y recomendar los pasos a seguir."
+        },
+        {
+            "termino": "Reprogramación",
+            "definicion": "El técnico puede reprogramar una visita por un máximo de dos días después de la solicitud original. El costo total de la reparación no puede exceder el 40% del valor comercial del dispositivo."
+        },
+        {
+            "termino": "Restricciones de seguridad",
+            "definicion": "El técnico no puede portar armas ni estar acompañado por otra persona durante el servicio. Si el lugar se considera inseguro, el técnico puede rechazar el trabajo, y el cliente recibirá un reembolso de los 25000 COP. JHP Digital evaluará si reembolsar al técnico los costos de transporte."
+        },
+        {
+            "termino": "Restricciones de ubicación",
+            "definicion": "El técnico no puede ser redirigido a una ubicación diferente de la acordada durante la solicitud de servicio."
+        },
+        {
+            "termino": "Descargo de responsabilidad de responsabilidad",
+            "definicion": "JHP Digital no se hace responsable de los daños causados por el técnico. El técnico es responsable de realizar el trabajo lo mejor posible."
+        },
+        {
+            "termino": "Verificación de técnicos",
+            "definicion": "JHP Digital realiza una verificación de antecedentes policiales e entrevistas a cada técnico para garantizar que estén calificados para los trabajos que realizan."
+        },
+        {
+            "termino": "Sin compensación adicional por trabajos no pagados",
+            "definicion": "Si el cliente confirma el inicio y la finalización de un trabajo, pero no se realiza ningún pago más allá de los 25000 COP de tarifa de transporte, JHP Digital retiene los 25000 COP y el técnico no recibe ninguna compensación adicional."
+        },
+        {
+            "termino": "Tarifas de JHP Digital",
+            "definicion": "JHP Digital cobra una tarifa del 5% sobre el monto total del servicio, que incluye la tarifa de transporte. Por ejemplo, si el monto total del servicio es de 35000 COP (25000 COP por transporte y 10000 COP por otros servicios), el técnico recibe el 95% de este monto."
+        }
+        ]
+    }
+}
+  

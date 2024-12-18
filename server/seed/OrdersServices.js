@@ -77,6 +77,8 @@
       TermsAgreed: 'Agreed to the standard terms and conditions.',
       TransactionRefNum1: 'TRANS12345',
       TransactionRefNum2: 'ALT12345',
+          ProvinceID:'Cundinamarca', 
+      CityID:'Bogotá'
     },
     {
       Name: 'Janeth Smith',
@@ -91,6 +93,8 @@
       TermsAgreed: 'Agreed to the standard terms and conditions.',
       TransactionRefNum1: 'TRANS54321',
       TransactionRefNum2: null,
+      ProvinceID:'Cundinamarca', 
+      CityID:'Bogotá'
     },
     {
       Name: 'Aliceos Johnsons',
@@ -105,6 +109,8 @@
       TermsAgreed: 'Agreed to the extended service terms.',
       TransactionRefNum1: 'TRANS67890',
       TransactionRefNum2: 'ALT67890',
+      ProvinceID:'Cundinamarca', 
+      CityID:'Bogotá'
     },
     {
       Name: 'Bob Browns',
@@ -119,6 +125,8 @@
       TermsAgreed: 'Agreed to the standard terms and conditions.',
       TransactionRefNum1: 'TRANS98765',
       TransactionRefNum2: null,
+          ProvinceID:'Cundinamarca', 
+      CityID:'Bogotá'
     },
     {
       Name: 'Charlie Whites',
@@ -133,6 +141,8 @@
       TermsAgreed: 'Agreed to the premium service terms.',
       TransactionRefNum1: 'TRANS24680',
       TransactionRefNum2: 'ALT24680',
+          ProvinceID:'Cundinamarca', 
+      CityID:'Bogotá'
     },
     {
       Name: 'Emily Davison',
@@ -147,6 +157,8 @@
       TermsAgreed: 'Agreed to the standard terms and conditions.',
       TransactionRefNum1: 'TRANS13579',
       TransactionRefNum2: null,
+          ProvinceID:'Cundinamarca', 
+      CityID:'Bogotá'
     },
     {
       Name: 'Frankie Green',
@@ -161,6 +173,8 @@
       TermsAgreed: 'Agreed to the extended service terms.',
       TransactionRefNum1: 'TRANS11223',
       TransactionRefNum2: 'ALT11223',
+          ProvinceID:'Cundinamarca', 
+      CityID:'Bogotá'
     },
     {
       Name: 'Grace Blacks',
@@ -175,6 +189,8 @@
       TermsAgreed: 'Agreed to the standard terms and conditions.',
       TransactionRefNum1: 'TRANS44556',
       TransactionRefNum2: null,
+          ProvinceID:'Cundinamarca', 
+      CityID:'Bogotá'
     },
     {
       Name: 'Hanks Yellow',
@@ -189,6 +205,8 @@
       TermsAgreed: 'Agreed to the premium service terms.',
       TransactionRefNum1: 'TRANS77889',
       TransactionRefNum2: 'ALT77889',
+          ProvinceID:'Cundinamarca', 
+      CityID:'Bogotá'
     },
   ]
 

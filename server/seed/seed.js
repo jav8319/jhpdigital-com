@@ -11,6 +11,8 @@ const folderPath = './imgs';
 const { storage, bucketName } = require('../config/connectionGC');
 const { teachingJobs, maintenanceJobs } = require('./Taskstoseed.js');
 const {teachingOrdersArr,MaintOrdeArr}= require('./OrdersServices.js');
+const mycitiesandprovinces = require('./Citiesprovinces');
+const  myfreeusers = require('./Usersfree.js');
 
 
 async function deleteFile(fileName) {
@@ -201,10 +203,89 @@ seedDataBase = async () => {
                 }
             }
         }
-        const myuserscreated =   await models.User.bulkCreate(users, { individualHooks: true })
+
+
+        let mycitiesobjstopass = []
+        let myprovincesobjstopass = []
+        for (const elementprov of mycitiesandprovinces) {
+            let ptovtofindforcity =''
+            let elmentincityprovtofind=''
+            const {province,city} = elementprov
+            elmentincityprovtofind = myprovincesobjstopass.find((elem) => elem.ProvinceName === province)
+            if(elmentincityprovtofind!==''){
+                let findproviceexist = await models.Province.findOne({ where: { ProvinceName: province } });
+                if(findproviceexist!==null&&findproviceexist!==undefined){
+                    myprovincesobjstopass.push({ProvinceID:findproviceexist.dataValues.id, ProvinceName:findproviceexist.dataValues.ProvinceName})
+                }else{
+                    const provicetocreate = await models.Province.create({ProvinceName:province});
+                    if(provicetocreate){
+                        myprovincesobjstopass.push({ProvinceID:provicetocreate.dataValues.id, ProvinceName:provicetocreate.dataValues.ProvinceName})
+                    }
+                }
+          
+            }
+            ptovtofindforcity = myprovincesobjstopass.find((elempv) => elempv.ProvinceName===province)
+            let findcityexist = await models.City.findOne({ where: { CityName: city } });
+
+            if(findcityexist!==null&&findcityexist!==undefined){
+                mycitiesobjstopass.push({CityID:findcityexist.dataValues.id, CityName:findcityexist.dataValues.CityName})
+            }else{
+                if(ptovtofindforcity!==null&&ptovtofindforcity!==undefined){
+                    const citytocreate = await models.City.create({CityName:city, ProvinceID:ptovtofindforcity.ProvinceID});
+                    if(citytocreate){
+                       mycitiesobjstopass.push({CityID:citytocreate.dataValues.id, CityName:citytocreate.dataValues.CityName})
+                    }
+                }
+      
+            }
+            
+         
+        }
+        const mynewObjsUsers = users.map((elemusertoadd) => {
+            const {username,email,address,password,ProvinceID,CityID,} = elemusertoadd;
+            const cityMapping =  mycitiesobjstopass.find((elemcityarr) => elemcityarr.CityName === CityID)
+            const provinceMapping =   myprovincesobjstopass.find((elemprovarr) => elemprovarr.ProvinceName === ProvinceID);
+            return {
+                username,
+                email,
+                address,
+                password,
+                isLive: true,
+                ProvinceID: provinceMapping ? provinceMapping.ProvinceID : null, // Ensure ProvinceID exists
+                CityID: cityMapping ? cityMapping.CityID : null, // Ensure CityID exists
+            };
+        });      
+        let myarrcitiesforfree = []
+        const myuserscreated =   await models.User.bulkCreate(mynewObjsUsers, { individualHooks: true })
+        const citiesprovsforfreeusers = await models.City.findAll({ })
+
+if(citiesprovsforfreeusers&&citiesprovsforfreeusers.length>0){
+    myarrcitiesforfree = [citiesprovsforfreeusers[0]?.dataValues,
+    citiesprovsforfreeusers[10]?.dataValues,
+]
+}
+        const mynewfreeObjsUsers = myfreeusers.map((elemusertoadd1) => {
+            const {username,email,address,password} = elemusertoadd1;
+        const mycityandprovice = getRandomElement(myarrcitiesforfree)
+        const mycityid = mycityandprovice.id
+        const myprovinceid = mycityandprovice.ProvinceID
+            return {
+                username,
+                email,
+                address,
+                password,
+                isLive: true,
+                ProvinceID: myprovinceid, // Ensure ProvinceID exists
+                CityID: mycityid
+            };
+        });
+        
+        const myfreeuserscreated =   await models.User.bulkCreate(mynewfreeObjsUsers, { individualHooks: true })
+       
         const availabilities = [];
+        
         if(myuserscreated&&myuserscreated.length>0){
-            for (let userId = 2; userId <= myuserscreated.length+1; userId++) {
+            for (let userId = 2; userId <= myuserscreated.length+1+myfreeuserscreated.length; userId++) {
                 for (let day = 0; day < 7; day++) {
                     const range1 = getRandomTimeRange1();
                     const range2 = getRandomTimeRange2(range1.finalHour);
@@ -237,6 +318,7 @@ seedDataBase = async () => {
                 }
             }
         }   
+        
         await models.Availability.bulkCreate(availabilities);
         let teachinTask=0
         let maintenanceTask=0
@@ -244,8 +326,8 @@ seedDataBase = async () => {
         maintenanceTask=maintenanceJobs.length
         const CodesT = []
         let totaltasknum=teachinTask+maintenanceTask
-        let mintask = totaltasknum-4
-        let maxtask = totaltasknum-2
+        let mintask = (Math.ceil(0.25 * totaltasknum))
+        let maxtask = (Math.ceil(0.75 * totaltasknum))
         if(mintask<0){
             mintask=1
         }
@@ -267,10 +349,38 @@ seedDataBase = async () => {
             ObjsMaint.push(elemMainttoadd)
         }
         await models.Task.bulkCreate(CodesT)
+        let mymintenancejobstopass = []
+        for (const ghj of ObjsMaint) {
+            const{DeviceType} = ghj
+            if(!mymintenancejobstopass.some((elem) => elem.DeviceType === DeviceType)){
+                const thedive = await models.DeviceType.create({DeviceName:DeviceType});
+                if(thedive){
+                    mymintenancejobstopass.push({DeviceID:thedive.dataValues.id,
+                    DeviceType:thedive.dataValues.DeviceName})
+                }
+            }
+        }
+       
+        const mynewObjsMaint = ObjsMaint.map((elem) => {
+            const { MaintenanceName, Description, Duration, Price, DeviceType, TaskCode, PreviousM_job, Obsolete } = elem;
+            const deviceMapping = mymintenancejobstopass.find(
+                    (elemarr) => elemarr.DeviceType === DeviceType
+                );
+            return {
+                MaintenanceName,
+                Description,
+                Duration,
+                Price,
+                PreviousM_job,
+                TaskCode,
+                Obsolete,
+                DeviceID: deviceMapping ? deviceMapping.DeviceID : null, // Ensure DeviceID exists
+            };
+        });
         const taskcodesarr = await models.Task.findAll({ attributes: ['id'] });
-        await models.MaintenanceJob.bulkCreate(ObjsMaint);
+        await models.MaintenanceJob.bulkCreate(mynewObjsMaint);
         await models.TeachingJob.bulkCreate(ObjsTeach);
-        for (let index2 = 1; index2 <=myuserscreated.length; index2++) {
+        for (let index2 = 1; index2 <=myuserscreated.length+1+myfreeuserscreated.length; index2++) {
             const howmanytasks= getRandomIntegerInRange(mintask,maxtask)
             const mypickedtasks = createUniquePicker(taskcodesarr, howmanytasks);
             for (const elementpicked of mypickedtasks) {
@@ -289,7 +399,10 @@ seedDataBase = async () => {
             myclientmaintenance.push({itr:arrindex, appointment:mydate});
         }
         const myMaintjobtopick = await models.MaintenanceJob.findAll({ attributes: ['id','Duration','TaskCode'] });
-        if(myMaintjobtopick&&myMaintjobtopick.length>0){
+        const cityMapping =  mycitiesobjstopass.find((elemcityarr) => elemcityarr.CityName === mycitiesandprovinces[0].city)
+        const provinceMapping =   myprovincesobjstopass.find((elemprovarr) => elemprovarr.ProvinceName === mycitiesandprovinces[0].province);
+
+        if(myMaintjobtopick&&myMaintjobtopick.length>0&&cityMapping&&provinceMapping){
             for (const appointreachelm of myclientmaintenance) {
                 const{itr, appointment} = appointreachelm;
                 const myramdonMaint = getRandomElement(myMaintjobtopick);
@@ -327,7 +440,9 @@ seedDataBase = async () => {
                         );
                         const durationinmilliseconds = tskdrtn * 1000;
                         const BookingDateEnd = new Date(BookingDateStart.getTime() + durationinmilliseconds);
-                        const orderformaint = await models.M_Order.create(MaintOrdeArr[itr]);                  
+                        const MOrdertopass = MaintOrdeArr[itr]
+                        const objOrderTopass = {...MOrdertopass,ProvinceID:provinceMapping.ProvinceID, CityID:cityMapping.CityID}
+                        const orderformaint = await models.M_Order.create(objOrderTopass);                  
                         if(orderformaint){
                             await models.MaintBooking.create({UserID:mypickedslot.dataValues.UserID, 
                             MaintOrderID:orderformaint.dataValues.id,
@@ -407,30 +522,39 @@ seedDataBase = async () => {
     }
 };
 
-
 seedDataBase();
 
 const getRandomTimeRange1 = () => {
     let startHour = 0
     let duration = 0
-startHour = Math.floor(Math.random() * (11)) + 6; // Random hour between 8 AM and 3 PM
+startHour = Math.floor(Math.random() * (7)) + 18; // Random hour between 8 AM and 3 PM
 
-duration = Math.floor(Math.random() * 6) + 3; // Random duration between 1 and 3 hours
-let cointest = Math.floor(Math.random() * (3))
-if(duration+startHour>20&&cointest===1){
-    duration = 3
+duration = Math.floor(Math.random() * 6) + 4; // Random duration between 1 and 3 hours
+let cointest = Math.floor(Math.random() * (5))
+if(duration+startHour>23&&cointest===1){
+    duration = 6
     startHour = 17
 }
-if(duration+startHour>20&&cointest===2){
-    duration = 5
-    startHour = 14
+if(duration+startHour>23&&cointest===2){
+    duration = 4
+    startHour = 18
 }
-if(duration+startHour>20&&cointest===0){
-    duration = 6
-    startHour = 12
+if(duration+startHour>23&&cointest===0){
+    duration = 7
+    startHour = 9
 }
-
-
+if(duration+startHour>23&&cointest===4){
+    duration = 7
+    startHour = 8
+}
+if(duration+startHour>23&&cointest===3){
+    duration = 15
+    startHour = 6
+}
+if(duration+startHour>23&&cointest===5){
+    duration = 7
+    startHour = 10
+}
 const initialHour = `${String(startHour).padStart(2, '0')}:00:00`;
 const finalHour = `${String(startHour + duration).padStart(2, '0')}:00:00`;
 return { initialHour, finalHour };
@@ -443,17 +567,29 @@ const getRandomTimeRange2 = (finalHour2) => {
     let overtime = false
     const arrelemF = finalHour2.split(':').map(Number)
     const hoursF = arrelemF[0]
-    let cointest = Math.floor(Math.random() * (3))
-    if(hoursF<15&&cointest>=1){
+    let cointest = Math.floor(Math.random() * (5))
+    if(hoursF<17&&cointest>=1){
         overtime = true
-        starthourstr = Math.floor(Math.random() * (5)) + 15; // Random hour between 8 AM and 
-        durationstr = Math.floor(Math.random() * 4) + 2; // Random duration between 1 and 3 hours
-        if(durationstr+starthourstr>20&&cointest===1){
-            durationstr = 2
+        starthourstr = Math.floor(Math.random() * 8)+17
+        durationstr = Math.floor(Math.random() * 4)+3
+        if(durationstr+starthourstr>24&&cointest===1){
+            durationstr = 3
             starthourstr = 18
         }
         if(durationstr+starthourstr>20&&cointest===2){
             durationstr = 3
+            starthourstr = 16
+        }
+        if(durationstr+starthourstr>20&&cointest===0){
+            durationstr = 4
+            starthourstr = 16
+        }
+        if(durationstr+starthourstr>20&&cointest===3){
+            durationstr = 4
+            starthourstr = 17
+        }
+        if(durationstr+starthourstr>20&&cointest===4){
+            durationstr = 6
             starthourstr = 16
         }
     }
@@ -465,9 +601,6 @@ const getRandomTimeRange2 = (finalHour2) => {
         return null
     }
 };
-
-
-
 
 function generateRandomString(length) {
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

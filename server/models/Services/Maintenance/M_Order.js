@@ -31,6 +31,23 @@ M_order.init(
       },
     },
 
+    ProvinceID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'myprovinces', // name of the related table
+        key: 'id',
+      },
+    },
+    CityID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'mycities', // name of the related table
+        key: 'id',
+      },
+    },
+
     location: {
       type: DataTypes.STRING,
       allowNull: false,

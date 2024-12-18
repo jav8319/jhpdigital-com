@@ -14,6 +14,8 @@ const ProdCode = require('./Store/ProdCode');
 const M_Order = require('./Services/Maintenance/M_Order.js');
 const MaintenanceJob = require('./Services/Maintenance/MaintenanceJob');
 const MaintBooking = require('./Services/Maintenance/MaintBooking');
+const DeviceType = require('./Services/Maintenance/DeviceType');
+
 
 const TeachingBooking = require('./Services/Teaching/TeachingBooking');
 const T_Order = require('./Services/Teaching/T_Order');
@@ -23,6 +25,8 @@ const UserTask = require('./Services/UserTask');
 const Availability = require('./Services/Availability');
 const Task = require('./Services/Task');
 
+const City = require('./Cities_prov/City.js');
+const Province = require('./Cities_prov/Province_.js');
 
 Product.belongsTo(Category, {
   foreignKey: 'CategoryID',
@@ -69,14 +73,7 @@ ProdCode.belongsToMany(P_Order, {
   otherKey: 'P_OrderID',
 });
 
-
-
-Availability.belongsTo(User, {
-  foreignKey: 'UserID',
-  onDelete: 'CASCADE',
-});
-
-
+//-----------------------------------------------------//
 
 MaintenanceJob.belongsToMany(User, {
   through: MaintBooking,
@@ -89,8 +86,11 @@ MaintenanceJob.belongsToMany(M_Order, {
   foreignKey: 'MaintJobId',
   otherKey: 'MaintOrderID',
 });
-
-
+DeviceType.hasMany(MaintenanceJob, {
+  foreignKey: 'DeviceID',
+  onDelete: 'CASCADE',
+});
+//-----------------------------------------------------//
 TeachingJob.belongsToMany(User, {
   through: TeachingBooking,
   foreignKey: 'TeachingJobId',
@@ -101,17 +101,55 @@ TeachingJob.belongsToMany(T_Order, {
   foreignKey: 'TeachingJobId',
   otherKey: 'TeachOrderID',
 });
-
+//-----------------------------------------------------//
 
 Task.belongsToMany(User, {
   through: UserTask,
   foreignKey: 'taskID',
   otherKey: 'UserID',
 });
+//-----------------------------------------------------//
+Availability.belongsTo(User, {
+  foreignKey: 'UserID',
+  onDelete: 'CASCADE',
+});
+//-----------------------------------------------------//
+City.belongsTo(Province, {
+  foreignKey: 'ProvinceID',
+  onDelete: 'CASCADE',
+});
+Province.hasMany(City, {
+  foreignKey: 'ProvinceID',
+  onDelete: 'CASCADE',
+});
+
+Province.hasMany(User, {
+  foreignKey: 'ProvinceID',
+  onDelete: 'CASCADE',
+});
+
+City.hasMany(User, {
+  foreignKey: 'CityID',
+  onDelete: 'CASCADE',
+});
+Province.hasMany(M_Order, {
+  foreignKey: 'ProvinceID',
+  onDelete: 'CASCADE',
+});
+
+City.hasMany(T_Order, {
+  foreignKey: 'CityID',
+  onDelete: 'CASCADE',
+});
+
+
 
 module.exports = {
 User,
+City,
+Province,
 UserTask,
+DeviceType,
 ProdCode,
 Category,
 ListAttribute,
